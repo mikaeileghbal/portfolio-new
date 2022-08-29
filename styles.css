@@ -20,7 +20,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(3, 71, 72, 0.3333333333);
+  background-color: #034748;
 }
 
 body {
@@ -55,13 +55,14 @@ header .container {
 
 body {
   background-color: #879f87;
+  overflow: overlay;
 }
 
 .hero-wrap .container {
   overflow: hidden;
   position: fixed;
   background-color: #879f87;
-  opacity: 0.6;
+  opacity: 1;
   z-index: -1;
   left: 0;
   top: 0;
@@ -454,4 +455,37 @@ div#overlay figcaption {
 .popup.top.show {
   transform: translate3d(-50%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
   transition-delay: 0.5s;
+}
+
+.nav-button-overlay {
+  position: fixed;
+  left: auto;
+  top: 2vw;
+  right: 6vw;
+  bottom: auto;
+  z-index: 410;
+  display: flex;
+  min-height: 80px;
+  align-items: center;
+  cursor: pointer;
+  z-index: 20000;
+}
+.nav-button-overlay .nav-button {
+  width: 60px;
+  height: 90px;
+  border-radius: 50px;
+  background-color: #333;
+  color: #fff;
+}
+.nav-button-overlay .menu-text {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  font-size: 20px;
+}
+.nav-button-overlay .menu-close {
+  display: none;
 }/*# sourceMappingURL=styles.css.map */
