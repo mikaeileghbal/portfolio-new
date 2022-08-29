@@ -30,9 +30,11 @@ body {
 .global {
   //background-color: #879f87;
 }
+
 header {
   padding: 1.4em 5em;
   z-index: 6000;
+
   .container {
     display: flex;
   }
@@ -233,9 +235,10 @@ div#overlay {
 }
 
 .about {
+  background-color: #879f87;
   margin-top: 100vh;
   z-index: 2;
-  padding: 4em 6em;
+  padding: 0em 6em;
 
   .text > p {
     color: var(--textColor);
@@ -352,7 +355,7 @@ div#overlay {
   overflow: hidden;
   height: 100vh;
   background-color: antiquewhite;
-  z-index: -10;
+  z-index: -2;
 }
 
 .footer-image {
@@ -435,12 +438,21 @@ div#overlay {
   top: 2vw;
   right: 6vw;
   bottom: auto;
-  z-index: 410;
+  z-index: 10000;
   display: flex;
   min-height: 80px;
   align-items: center;
   cursor: pointer;
   z-index: 20000;
+  opacity: 0;
+  transform: translate3d(30px, -20px, 0) scale(0.7);
+  transition: all 0.2s ease-out 0s;
+
+  &.show {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    transition: all 0.4s ease-out 0.2s;
+  }
 
   .nav-button {
     width: 60px;
@@ -460,5 +472,31 @@ div#overlay {
   }
   .menu-close {
     display: none;
+  }
+}
+
+.overlay-menu {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #3a2e39;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .link-wrapper {
+    padding: 0 2em;
+    //background-color: #879f87;
+  }
+
+  .overlay-link {
+    color: #f8f8f8;
+    display: block;
+    text-decoration: none;
+    font-size: min(23vw, 23vh);
+    line-height: min(21vw, 21vh);
+    text-align: center;
   }
 }
