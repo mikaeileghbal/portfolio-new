@@ -20,7 +20,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #034748;
+  background-color: #456464;
 }
 
 body {
@@ -33,24 +33,6 @@ header {
 }
 header .container {
   display: flex;
-}
-
-#lightbox {
-  max-width: 800px;
-  margin: 0 auto;
-}
-#lightbox #images {
-  display: flex;
-  transition: all 0.5s;
-  width: 600px;
-  max-width: 600px;
-  background-color: antiquewhite;
-  padding: 10px 0;
-  margin: 0 0;
-  overflow: hidden;
-}
-#lightbox #images img {
-  width: 150px;
 }
 
 body {
@@ -94,6 +76,8 @@ body {
 
 .marq {
   font-size: 25vh;
+  letter-spacing: 4px;
+  font-style: italic;
   -webkit-animation: scrollIn 2s cubic-bezier(0.19, 1, 0.22, 1);
           animation: scrollIn 2s cubic-bezier(0.19, 1, 0.22, 1);
 }
@@ -111,11 +95,16 @@ body {
 }
 .marq .scroller .highlight {
   color: #034748;
+  font-style: normal;
 }
 
 .marq-2 {
   -webkit-animation: scrollIn-revers 2s cubic-bezier(0.19, 1, 0.22, 1);
           animation: scrollIn-revers 2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.marq-3 {
+  margin-left: 0.3em;
 }
 
 .scroller {
@@ -130,7 +119,7 @@ body {
 
 @-webkit-keyframes marquee {
   0% {
-    transform: translate3d(-70%, 0, 0);
+    transform: translate3d(-55%, 0, 0);
   }
   100% {
     transform: translate3d(-170%, 0, 0);
@@ -139,7 +128,7 @@ body {
 
 @keyframes marquee {
   0% {
-    transform: translate3d(-70%, 0, 0);
+    transform: translate3d(-55%, 0, 0);
   }
   100% {
     transform: translate3d(-170%, 0, 0);
@@ -184,34 +173,20 @@ body {
 @-webkit-keyframes scrollIn-revers {
   0% {
     opacity: 0;
-    filter: blur(1.2);
-    transform: translate3d(-25%, 0, 0);
-  }
-  70% {
-    opacity: 0.7;
-    filter: blur(1.03);
-    transform: translate3d(0%, 0, 0);
+    transform: translate3d(-30%, 0, 0);
   }
   100% {
     opacity: 1;
-    filter: blur(1);
     transform: translate3d(0%, 0, 0);
   }
 }
 @keyframes scrollIn-revers {
   0% {
     opacity: 0;
-    filter: blur(1.2);
-    transform: translate3d(-25%, 0, 0);
-  }
-  70% {
-    opacity: 0.7;
-    filter: blur(1.03);
-    transform: translate3d(0%, 0, 0);
+    transform: translate3d(-30%, 0, 0);
   }
   100% {
     opacity: 1;
-    filter: blur(1);
     transform: translate3d(0%, 0, 0);
   }
 }
@@ -280,7 +255,6 @@ div#overlay figcaption {
   }
 }
 .about {
-  background-color: #879f87;
   margin-top: 100vh;
   z-index: 2;
   padding: 0em 6em;
@@ -325,7 +299,7 @@ div#overlay figcaption {
   top: 0;
   right: 0;
   bottom: 0;
-  z-index: 5000;
+  z-index: 50000;
   width: 100%;
   height: 100%;
   background-image: url("./images/noise.png");

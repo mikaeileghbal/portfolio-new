@@ -102,6 +102,33 @@ navButton.addEventListener("click", (e) => {
   console.log(links);
   links.forEach((link, index) => {
     link.classList.toggle("animate");
-    link.style.animationDelay = `${1.2 + index / 10}s`;
+    link.style.animationDelay = `${1 + index / 10}s`;
   });
 });
+
+const marqs = document.querySelectorAll(".marq");
+console.log(marqs);
+//const marq2 = document.querySelector(".marq-2");
+//const marq3 = document.querySelector(".marq-3");
+const scrollers = document.querySelectorAll(".scroller");
+
+setInterval(() => {
+  marqs.forEach((marq) => {
+    marq.style.animation = "none";
+    marq.offsetHeight;
+    marq.style.animation = "";
+  });
+  // marq2.style.animation = "none";
+  // marq2.offsetHeight;
+  // marq2.style.animation = "";
+  // marq3.style.animation = "none";
+  // marq3.offsetHeight;
+  // marq3.style.animation = "";
+  scrollers.forEach((scroller) => {
+    scroller.style.animation = "none";
+    scroller.offsetHeight;
+    scroller.style.animation = "";
+  });
+  //marq.style.transform = "translate3d(0%,0%,0%)";
+  //marq.style.animation = "scrollIn 2s cubic-bezier(0.19, 1, 0.22, 1);";
+}, 20000);
