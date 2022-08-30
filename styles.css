@@ -474,19 +474,8 @@ div#overlay figcaption {
   transform: translate3d(30px, -20px, 0) scale(0.7);
   transition: all 0.2s ease-out 0s;
 }
-.nav-button-overlay.show {
-  opacity: 1;
-  transform: translate3d(0, 0, 0) scale(1);
-  transition: all 0.4s ease-out 0.2s;
-}
-.nav-button-overlay .nav-button {
-  width: 60px;
-  height: 90px;
-  border-radius: 50px;
-  background-color: #333;
-  color: #fff;
-}
-.nav-button-overlay .menu-text {
+.nav-button-overlay .menu-text,
+.nav-button-overlay .menu-close {
   width: 100%;
   height: 100%;
   display: flex;
@@ -498,17 +487,42 @@ div#overlay figcaption {
 .nav-button-overlay .menu-close {
   display: none;
 }
+.nav-button-overlay.show {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  transition: all 0.4s ease-out 0.2s;
+}
+.nav-button-overlay .nav-button {
+  width: 60px;
+  height: 90px;
+  border-radius: 50px;
+  background-color: black;
+  color: #fff;
+}
+.nav-button-overlay .nav-button.open .menu-text {
+  display: none;
+}
+.nav-button-overlay .nav-button.open .menu-close {
+  display: flex;
+}
 
 .overlay-menu {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100%;
   height: 100vh;
   background-color: #3a2e39;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
+  transform: translateX(100%);
+  transition: all 1.2s ease;
+  z-index: 20000;
+}
+.overlay-menu.open {
+  transform: translateX(0);
 }
 .overlay-menu .link-wrapper {
   padding: 0 2em;
@@ -520,4 +534,41 @@ div#overlay figcaption {
   font-size: min(23vw, 23vh);
   line-height: min(21vw, 21vh);
   text-align: center;
+  letter-spacing: 6px;
+  overflow: hidden;
+  transition: 0.5s ease;
+}
+.overlay-menu .overlay-link:hover {
+  color: #879f87;
+}
+.overlay-menu .overlay-link.active {
+  opacity: 0.1;
+}
+.overlay-menu .overlay-link span {
+  display: inline-block;
+  transform: translateY(100%);
+}
+.overlay-menu .overlay-link span.animate {
+  -webkit-animation: slideUp 1.2s ease;
+          animation: slideUp 1.2s ease;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }/*# sourceMappingURL=styles.css.map */
