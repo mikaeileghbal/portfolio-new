@@ -1,0 +1,87 @@
+@import "./partials/global";
+@import "./partials/base";
+@import "./partials/header";
+@import "./partials/links";
+@import "./partials/hero";
+@import "./partials/scroller";
+@import "./partials/about";
+@import "./partials/work";
+@import "./partials/mouse";
+@import "./partials/footer";
+
+.spliter {
+  position: relative;
+  height: 100vh;
+
+  .top {
+    position: absolute;
+    top: 0px;
+    height: 165px;
+    width: 100%;
+    border-bottom-left-radius: 45px;
+    border-bottom-right-radius: 45px;
+    box-shadow: 0 20px 15px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.19);
+    background-color: #879f87;
+  }
+}
+
+.popup {
+  position: fixed;
+  right: 80px;
+  bottom: 6em;
+  display: inline-block;
+  padding: 55px;
+  border-radius: 130px;
+  background-color: #333;
+  width: 400px;
+  color: white;
+  z-index: 1000;
+  box-shadow: 4px 4px 40px 0 rgba(0, 0, 0, 0.4);
+
+  transform: translate3d(150px, 150px, 0px) scale3d(0.4, 0.4, 1) rotateX(0deg)
+    rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+  transform-style: preserve-3d;
+
+  opacity: 0;
+
+  //cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transition: all 0.5s ease-out;
+  a {
+    text-decoration: none;
+    color: white;
+    font-size: 60px;
+  }
+}
+
+.popup.show {
+  transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg)
+    rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+  transform-style: preserve-3d;
+  opacity: 1;
+}
+
+.popup.top {
+  top: 1em;
+  left: 50%;
+  right: auto;
+  margin: 0 auto;
+
+  font-size: 40px;
+  width: 100px;
+  height: 100px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  background-color: #879f87;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 0, 0, 0.19);
+
+  transform: translate3d(-50%, 200px, 0px) scale3d(0.4, 0.4, 1) rotateX(0deg)
+    rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+  transition: all 0.4s ease-out;
+}
+
+.popup.top.show {
+  transform: translate3d(-50%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg)
+    rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+  transition-delay: 0.5s;
+}

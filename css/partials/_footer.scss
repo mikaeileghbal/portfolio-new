@@ -1,0 +1,19 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
+  height: 100vh;
+  background-color: antiquewhite;
+  z-index: -2;
+}
+
+.footer-image {
+  position: absolute;
+  width: 200%;
+}
+
+.footer-image.show {
+  width: 180%;
+  transition: all 1.5s ease-out;
+}

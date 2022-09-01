@@ -1,0 +1,19 @@
+.about {
+  margin-top: 97vh;
+  z-index: 2;
+  padding: 0 6em;
+
+  .text > p {
+    color: var(--textColor);
+    font-size: 70px;
+    max-width: 90%;
+    font-weight: lighter;
+  }
+
+  h2 {
+    font-weight: 400;
+    margin-top: 2em;
+    font-size: 28px;
+    color: var(--textColor);
+  }
+}

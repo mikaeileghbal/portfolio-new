@@ -26,6 +26,24 @@
 
 body {
   position: relative;
+  background-color: var(--background);
+  overflow: overlay;
+}
+
+.noise-overlay {
+  pointer-events: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50000;
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/noise.png");
+  background-position: 0 0;
+  background-size: 250px 250px;
+  opacity: 0.4;
 }
 
 header {
@@ -37,11 +55,148 @@ header .container {
   align-items: center;
 }
 
-body {
-  background-color: var(--background);
-  overflow: overlay;
+.top-link,
+.logo {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--textColor);
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 32px;
+  margin-right: auto;
 }
 
+.top-link {
+  font-size: 26px;
+  line-height: 26px;
+  margin: 0 0.8em;
+}
+
+.nav-button-overlay {
+  position: fixed;
+  left: auto;
+  top: 2vw;
+  right: 6vw;
+  bottom: auto;
+  z-index: 10000;
+  display: flex;
+  min-height: 80px;
+  align-items: center;
+  cursor: pointer;
+  z-index: 20000;
+  opacity: 0;
+  transform: translate3d(30px, -20px, 0) scale(0.7);
+  transition: all 0.2s ease-out 0s;
+}
+.nav-button-overlay .menu-text,
+.nav-button-overlay .menu-close {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  font-size: 20px;
+}
+.nav-button-overlay .menu-close {
+  display: none;
+}
+.nav-button-overlay.show {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  transition: all 0.4s ease-out 0.2s;
+}
+.nav-button-overlay .nav-button {
+  width: 60px;
+  height: 90px;
+  border-radius: 50px;
+  background-color: #3a2e39;
+  color: #fff;
+  transition: all 1s ease-out;
+}
+.nav-button-overlay .nav-button.open {
+  background-color: black;
+}
+.nav-button-overlay .nav-button.open .menu-text {
+  display: none;
+}
+.nav-button-overlay .nav-button.open .menu-close {
+  display: flex;
+}
+
+.overlay-menu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #3a2e39;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(100%);
+  transition: all 1.2s ease;
+  z-index: 20000;
+}
+.overlay-menu.open {
+  transform: translateX(0);
+}
+.overlay-menu .link-wrapper {
+  padding: 0 2em;
+}
+.overlay-menu .overlay-link {
+  color: #f8f8f8;
+  display: block;
+  text-decoration: none;
+  font-size: min(23vw, 23vh);
+  line-height: min(21vw, 21vh);
+  text-align: center;
+  letter-spacing: 6px;
+  overflow: hidden;
+  transition: 0.5s ease;
+}
+.overlay-menu .overlay-link:hover {
+  color: #879f87;
+}
+.overlay-menu .overlay-link.active {
+  opacity: 0.1;
+}
+.overlay-menu .overlay-link span {
+  display: inline-block;
+  transform: translateY(100%);
+}
+.overlay-menu .overlay-link span.animate {
+  -webkit-animation: slideUp 1.2s ease;
+          animation: slideUp 1.2s ease;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+.hero-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  cursor: default;
+  pointer-events: none;
+}
 .hero-wrap .container {
   overflow: hidden;
   position: fixed;
@@ -55,12 +210,23 @@ body {
   transition: all 1s ease-out;
 }
 
-.hero-wrap {
+.image-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  cursor: default;
-  pointer-events: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+.image-wrapper .hero-image {
+  width: min(45vw, 620px);
+  height: max(66vh, 350px);
+  margin-top: 0.7em;
+  transform-origin: 50% 0%;
+  transition: all 0.125s ease-out;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .row {
@@ -242,73 +408,6 @@ body {
   z-index: -1;
 }
 
-.noise-overlay {
-  pointer-events: none;
-  position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 50000;
-  width: 100%;
-  height: 100%;
-  background-image: url("./images/noise.png");
-  background-position: 0 0;
-  background-size: 250px 250px;
-  opacity: 0.4;
-}
-
-.image-wrapper {
-  position: absolute;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10;
-}
-.image-wrapper .hero-image {
-  width: min(45vw, 620px);
-  height: max(66vh, 350px);
-  margin-top: 0.7em;
-  transform-origin: 50% 0%;
-  transition: all 0.125s ease-out;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-.top-link,
-.logo {
-  display: inline-block;
-  text-decoration: none;
-  color: var(--textColor);
-  font-size: 32px;
-  font-weight: 600;
-  line-height: 32px;
-  margin-right: auto;
-}
-
-.top-link {
-  font-size: 26px;
-  line-height: 26px;
-  margin: 0 0.8em;
-}
-
-.spliter {
-  position: relative;
-  height: 100vh;
-}
-.spliter .top {
-  position: absolute;
-  top: 0px;
-  height: 165px;
-  width: 100%;
-  border-bottom-left-radius: 45px;
-  border-bottom-right-radius: 45px;
-  box-shadow: 0 20px 15px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.19);
-  background-color: #879f87;
-}
-
 .footer {
   position: fixed;
   bottom: 0;
@@ -327,6 +426,21 @@ body {
 .footer-image.show {
   width: 180%;
   transition: all 1.5s ease-out;
+}
+
+.spliter {
+  position: relative;
+  height: 100vh;
+}
+.spliter .top {
+  position: absolute;
+  top: 0px;
+  height: 165px;
+  width: 100%;
+  border-bottom-left-radius: 45px;
+  border-bottom-right-radius: 45px;
+  box-shadow: 0 20px 15px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.19);
+  background-color: #879f87;
 }
 
 .popup {
@@ -378,123 +492,4 @@ body {
 .popup.top.show {
   transform: translate3d(-50%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
   transition-delay: 0.5s;
-}
-
-.nav-button-overlay {
-  position: fixed;
-  left: auto;
-  top: 2vw;
-  right: 6vw;
-  bottom: auto;
-  z-index: 10000;
-  display: flex;
-  min-height: 80px;
-  align-items: center;
-  cursor: pointer;
-  z-index: 20000;
-  opacity: 0;
-  transform: translate3d(30px, -20px, 0) scale(0.7);
-  transition: all 0.2s ease-out 0s;
-}
-.nav-button-overlay .menu-text,
-.nav-button-overlay .menu-close {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 500;
-  font-size: 20px;
-}
-.nav-button-overlay .menu-close {
-  display: none;
-}
-.nav-button-overlay.show {
-  opacity: 1;
-  transform: translate3d(0, 0, 0) scale(1);
-  transition: all 0.4s ease-out 0.2s;
-}
-.nav-button-overlay .nav-button {
-  width: 60px;
-  height: 90px;
-  border-radius: 50px;
-  background-color: #3a2e39;
-  color: #fff;
-  transition: all 1s ease-out;
-}
-.nav-button-overlay .nav-button.open {
-  background-color: black;
-}
-.nav-button-overlay .nav-button.open .menu-text {
-  display: none;
-}
-.nav-button-overlay .nav-button.open .menu-close {
-  display: flex;
-}
-
-.overlay-menu {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: #3a2e39;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform: translateX(100%);
-  transition: all 1.2s ease;
-  z-index: 20000;
-}
-.overlay-menu.open {
-  transform: translateX(0);
-}
-.overlay-menu .link-wrapper {
-  padding: 0 2em;
-}
-.overlay-menu .overlay-link {
-  color: #f8f8f8;
-  display: block;
-  text-decoration: none;
-  font-size: min(23vw, 23vh);
-  line-height: min(21vw, 21vh);
-  text-align: center;
-  letter-spacing: 6px;
-  overflow: hidden;
-  transition: 0.5s ease;
-}
-.overlay-menu .overlay-link:hover {
-  color: #879f87;
-}
-.overlay-menu .overlay-link.active {
-  opacity: 0.1;
-}
-.overlay-menu .overlay-link span {
-  display: inline-block;
-  transform: translateY(100%);
-}
-.overlay-menu .overlay-link span.animate {
-  -webkit-animation: slideUp 1.2s ease;
-          animation: slideUp 1.2s ease;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-}
-
-@-webkit-keyframes slideUp {
-  from {
-    transform: translateY(100%);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideUp {
-  from {
-    transform: translateY(100%);
-  }
-  to {
-    transform: translateY(0);
-  }
-}/*# sourceMappingURL=styles.css.map */
+}/*# sourceMappingURL=main.css.map */
