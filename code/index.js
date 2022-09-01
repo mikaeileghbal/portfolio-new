@@ -1,9 +1,42 @@
+const theme = {
+  light: {
+    color: "#171216",
+    background: "#879F87",
+  },
+  dark: {
+    color: "#FFF",
+    background: "#171216",
+    menuButton: "#3A2E39",
+  },
+};
+
 window.addEventListener("scroll", function (e) {
   // if (this.window.scrollY > 360)
   //   this.document.querySelector(".hero-wrap").style.display = "none";
   // else this.document.querySelector(".hero-wrap").style.display = "block";
   animateHero();
+  setTheme();
 });
+
+function setTheme() {
+  if (window.scrollY > 900) {
+    changeThemeToDark();
+  } else {
+    changeThemeToLight();
+  }
+}
+
+function changeThemeToDark() {
+  let root = document.documentElement;
+  root.style.setProperty("--textColor", theme.dark.color);
+  root.style.setProperty("--background", theme.dark.background);
+}
+
+function changeThemeToLight() {
+  let root = document.documentElement;
+  root.style.setProperty("--textColor", theme.light.color);
+  root.style.setProperty("--background", theme.light.background);
+}
 
 function animateHero() {
   const SCROLL_AMOUNT = 5;
@@ -94,17 +127,30 @@ const navButton = document.querySelector(".nav-button");
 console.log(navButton);
 navButton.addEventListener("click", (e) => {
   const overlayMenu = document.querySelector(".overlay-menu");
+  const overlayClasses = overlayMenu.classList;
 
-  overlayMenu.classList.toggle("open");
+  overlayClasses.toggle("open");
   navButton.classList.toggle("open");
 
-  const links = document.querySelectorAll(".overlay-link>span");
-  console.log(links);
+  const links = document.querySelectorAll(".overlay-link > span");
+
   links.forEach((link, index) => {
     link.classList.toggle("animate");
     link.style.animationDelay = `${1 + index / 10}s`;
   });
+
+  scrollHide(overlayClasses.contains("open"));
 });
+
+function scrollHide(open) {
+  if (open) {
+    document.body.style.height = "100%";
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.height = "auto";
+    document.body.style.overflow = "unset";
+  }
+}
 
 const marqs = document.querySelectorAll(".marq");
 console.log(marqs);
