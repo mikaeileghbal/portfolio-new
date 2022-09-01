@@ -19,7 +19,7 @@ window.addEventListener("scroll", function (e) {
 });
 
 function setTheme() {
-  if (window.scrollY > 900) {
+  if (window.scrollY > 880) {
     changeThemeToDark();
   } else {
     changeThemeToLight();

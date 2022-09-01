@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Zen+Antique+Soft&display=swap");
 :root {
   --pointer: #d2d8d2;
   --textColor: #171216;
@@ -25,6 +26,8 @@
 }
 
 body {
+  font-family: "Zen Antique Soft", serif;
+  font-size: 12px;
   position: relative;
   background-color: var(--background);
   overflow: overlay;
