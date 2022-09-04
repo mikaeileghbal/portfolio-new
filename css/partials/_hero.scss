@@ -29,11 +29,11 @@
   z-index: 10;
 
   .hero-image {
-    width: min(45vw, 620px);
-    height: max(66vh, 350px);
-    margin-top: 0.7em;
+    width: min(48vw, 640px);
+    height: max(58vh, 350px);
+    margin-top: 1em;
     transform-origin: 50% 0%;
-    transition: all 0.125s ease-out;
+    transition: all 0.3s ease-out;
     object-fit: cover;
   }
 }

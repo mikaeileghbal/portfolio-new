@@ -10,10 +10,11 @@
   flex-direction: column;
   justify-content: space-evenly;
   overflow: hidden;
+  padding: 4em 0;
 }
 
 .marq {
-  font-size: 25vh;
+  font-size: 22vh;
   letter-spacing: 4px;
   font-style: italic;
   animation: scrollIn 2s cubic-bezier(0.19, 1, 0.22, 1);
@@ -55,11 +56,11 @@
 
 @keyframes marquee {
   0% {
-    transform: translate3d(-55%, 0, 0);
+    transform: translate3d(-80%, 0, 0);
   }
 
   100% {
-    transform: translate3d(-170%, 0, 0);
+    transform: translate3d(-180%, 0, 0);
   }
 }
 

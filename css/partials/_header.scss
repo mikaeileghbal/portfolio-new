@@ -1,8 +1,9 @@
 header {
-  padding: 2em 7em 1.5em 5em;
+  padding: 2em 7em 1.5em;
   z-index: 6000;
 
   .container {
+    padding-top: 0.25em;
     display: flex;
     align-items: center;
   }

@@ -19,7 +19,7 @@ window.addEventListener("scroll", function (e) {
 });
 
 function setTheme() {
-  if (window.scrollY > 880) {
+  if (window.scrollY > 960) {
     changeThemeToDark();
   } else {
     changeThemeToLight();
@@ -109,7 +109,7 @@ logo.addEventListener("mouseleave", () => {
 window.addEventListener("scroll", (e) => {
   const postion = window.scrollY;
 
-  if (postion > 1000) {
+  if (postion > 1700) {
     document.querySelector(".popup").classList.add("show");
     document.querySelector(".popup.top").classList.add("show");
   } else {

@@ -1,4 +1,9 @@
 .work {
-  height: 100vh;
-  padding: 4em 6em;
+  padding: 4em 7em;
+  background-color: transparent;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
 }
