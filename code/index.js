@@ -108,18 +108,21 @@ logo.addEventListener("mouseleave", () => {
 // footer animations
 window.addEventListener("scroll", (e) => {
   const postion = window.scrollY;
+  const popup = document.querySelector(".popup");
+  const popupTop = document.querySelector(".popup.top");
+  const footerImage = document.querySelector(".footer-image");
 
   if (postion > 1700) {
-    document.querySelector(".popup").classList.add("show");
-    document.querySelector(".popup.top").classList.add("show");
+    popup.add("show");
+    popupTop.classList.add("show");
   } else {
-    document.querySelector(".popup").classList.remove("show");
-    document.querySelector(".popup.top").classList.remove("show");
+    popup.remove("show");
+    popupTop.classList.remove("show");
   }
   if (postion > 2360) {
-    document.querySelector(".footer-image").classList.add("show");
+    footerImage.classList.add("show");
   } else {
-    document.querySelector(".footer-image").classList.remove("show");
+    footerImage.classList.remove("show");
   }
 });
 
@@ -154,8 +157,6 @@ function scrollHide(open) {
 
 const marqs = document.querySelectorAll(".marq");
 console.log(marqs);
-//const marq2 = document.querySelector(".marq-2");
-//const marq3 = document.querySelector(".marq-3");
 const scrollers = document.querySelectorAll(".scroller");
 
 setInterval(() => {
@@ -164,17 +165,9 @@ setInterval(() => {
     marq.offsetHeight;
     marq.style.animation = "";
   });
-  // marq2.style.animation = "none";
-  // marq2.offsetHeight;
-  // marq2.style.animation = "";
-  // marq3.style.animation = "none";
-  // marq3.offsetHeight;
-  // marq3.style.animation = "";
   scrollers.forEach((scroller) => {
     scroller.style.animation = "none";
     scroller.offsetHeight;
     scroller.style.animation = "";
   });
-  //marq.style.transform = "translate3d(0%,0%,0%)";
-  //marq.style.animation = "scrollIn 2s cubic-bezier(0.19, 1, 0.22, 1);";
 }, 20000);
