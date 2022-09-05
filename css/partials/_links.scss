@@ -33,6 +33,10 @@
   transform: translate3d(30px, -20px, 0) scale(0.7);
   transition: all 0.2s ease-out 0s;
 
+  .close,
+  .menu {
+    margin-top: -6px;
+  }
   .menu-text,
   .menu-close {
     width: 100%;
@@ -40,8 +44,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: 500;
-    font-size: 20px;
+    font-weight: 400;
+    font-size: 18px;
   }
   .menu-close {
     display: none;
@@ -83,6 +87,7 @@
   background-color: #3a2e39;
   overflow: hidden;
   display: flex;
+
   justify-content: center;
   align-items: center;
   transform: translateX(100%);
@@ -94,17 +99,19 @@
   }
 
   .link-wrapper {
-    padding: 0 2em;
+    padding: 3em 0;
+    height: 100%;
   }
 
   .overlay-link {
     color: #f8f8f8;
     display: block;
     text-decoration: none;
-    font-size: min(23vw, 23vh);
+    font-size: min(22vw, 22vh);
     line-height: min(21vw, 21vh);
+    font-weight: lighter;
     text-align: center;
-    letter-spacing: 6px;
+    letter-spacing: 4px;
     overflow: hidden;
     transition: 0.5s ease;
 
