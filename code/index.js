@@ -21,8 +21,12 @@ window.addEventListener("scroll", function (e) {
 function setTheme() {
   if (window.scrollY > 960) {
     changeThemeToDark();
+    showProjec();
+    showArticle(0);
   } else {
     changeThemeToLight();
+    hideProject(0);
+    hideArticle(0);
   }
 }
 
@@ -36,6 +40,26 @@ function changeThemeToLight() {
   let root = document.documentElement;
   root.style.setProperty("--textColor", theme.light.color);
   root.style.setProperty("--background", theme.light.background);
+}
+
+function showProjec() {
+  document.querySelector(".project").style.display = "block";
+  document.querySelector(".project").style.opacity = "1";
+}
+
+function hideProject() {
+  document.querySelector(".project").style.display = "none";
+  document.querySelector(".project").style.opacity = "0";
+}
+
+function showArticle(index) {
+  document.querySelectorAll(".project-container")[index].style.display =
+    "block";
+  document.querySelectorAll(".project-container")[index].style.opacity = "1";
+}
+function hideArticle(index) {
+  document.querySelectorAll(".project-container")[index].style.display = "none";
+  document.querySelectorAll(".project-container")[index].style.opacity = "0";
 }
 
 function animateHero() {

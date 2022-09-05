@@ -392,12 +392,15 @@ header .container {
 
 .project {
   position: fixed;
+  display: none;
+  opacity: 0;
   width: 100%;
   height: 100%;
   left: 0;
   top: 0;
   background-color: rgba(200, 0, 0, 0.5);
   padding: 2em;
+  transition: all 0.5s ease-out;
 }
 
 article {
@@ -420,6 +423,8 @@ article .project-container {
   top: 0;
   right: 0;
   bottom: 0;
+  opacity: 0;
+  display: none;
 }
 article .images {
   display: flex;
@@ -437,6 +442,10 @@ article .images .first-image,
 article .images .second-image {
   width: 250px;
   height: 300px;
+  -webkit-animation: appear 0.5s ease-out 0.5s;
+          animation: appear 0.5s ease-out 0.5s;
+  -webkit-animation-fill-mode: backwards;
+          animation-fill-mode: backwards;
 }
 article .images .first-image {
   transform: rotateZ(-6deg) translateX(2em);
@@ -448,11 +457,47 @@ article .images .main-image {
   z-index: 2;
   box-shadow: 6px 6px 20px 0 rgba(0, 0, 0, 0.61);
   transition: transform 0.4s ease-out;
+  -webkit-animation: appear 0.5s ease-out;
+          animation: appear 0.5s ease-out;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
 }
 article .images .main-image:hover {
   transform: scale(1.1);
 }
 
+.slider {
+  position: absolute;
+  margin-left: 5em;
+  width: 40px;
+  height: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50px;
+  border: 3px solid gray;
+}
+
+@-webkit-keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .mouse-tail {
   position: fixed;
   left: 50%;
