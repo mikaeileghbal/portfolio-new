@@ -10,11 +10,12 @@
 
 .footer-image {
   position: absolute;
-  width: 200%;
+  width: 120%;
+  opacity: 0.2;
 }
 
 .footer-image.show {
-  width: 180%;
+  width: 100%;
   transition: all 1.5s ease-out;
 }
 

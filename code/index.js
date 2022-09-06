@@ -15,18 +15,53 @@ window.addEventListener("scroll", function (e) {
   //   this.document.querySelector(".hero-wrap").style.display = "none";
   // else this.document.querySelector(".hero-wrap").style.display = "block";
   animateHero();
+  setHero();
   setTheme();
+  setProject();
+  setArticle();
 });
 
+function setHero() {
+  const scrillPos = window.scrollY;
+  if (scrollY > 3450) {
+    document.querySelector(".hero-wrap").style.display = "none";
+  } else {
+    document.querySelector(".hero-wrap").style.display = "block";
+  }
+}
+
 function setTheme() {
-  if (window.scrollY > 960) {
+  const scrillPos = window.scrollY;
+  if (scrollY > 960 && scrollY < 3200) {
     changeThemeToDark();
-    showProjec();
-    showArticle(0);
   } else {
     changeThemeToLight();
+  }
+}
+
+function setProject() {
+  const scrollPos = window.scrollY;
+  if (scrollPos > 960 && scrollPos < 3200) {
+    showProjec();
+    //showArticle(0);
+  } else {
     hideProject(0);
-    hideArticle(0);
+    //hideArticle(0);
+  }
+}
+
+function setArticle() {
+  const scrollPos = window.scrollY;
+  hideArticle(0);
+  hideArticle(1);
+  hideArticle(2);
+
+  if (scrollPos > 960 && scrollPos < 1800) {
+    showArticle(0);
+  } else if (scrollPos >= 1800 && scrollPos < 2600) {
+    showArticle(1);
+  } else if (scrollPos >= 2600 && scrollPos < 3200) {
+    showArticle(2);
   }
 }
 

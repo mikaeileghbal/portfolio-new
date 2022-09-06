@@ -393,19 +393,16 @@ header .container {
 .project {
   position: fixed;
   display: none;
-  opacity: 0;
+  opacity: 1;
   width: 100%;
   height: 100%;
   left: 0;
   top: 0;
-  background-color: rgba(200, 0, 0, 0.5);
   padding: 2em;
   transition: all 0.5s ease-out;
 }
 
 article {
-  opacity: 0.2;
-  background-color: aqua;
   border: 10px solid red;
   padding: 2em;
   position: relative;
@@ -414,6 +411,7 @@ article {
   padding: 0;
   margin: 0;
   display: block;
+  transition: all 1s ease-out;
 }
 article .project-container {
   position: fixed;
@@ -454,6 +452,8 @@ article .images .second-image {
   transform: rotateZ(6deg) translateX(-2em);
 }
 article .images .main-image {
+  width: 500px;
+  height: 420px;
   z-index: 2;
   box-shadow: 6px 6px 20px 0 rgba(0, 0, 0, 0.61);
   transition: transform 0.4s ease-out;
@@ -536,11 +536,12 @@ article .images .main-image:hover {
 
 .footer-image {
   position: absolute;
-  width: 200%;
+  width: 120%;
+  opacity: 0.2;
 }
 
 .footer-image.show {
-  width: 180%;
+  width: 100%;
   transition: all 1.5s ease-out;
 }
 
@@ -608,4 +609,10 @@ article .images .main-image:hover {
 .popup.top.show {
   transform: translate3d(-50%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
   transition-delay: 0.5s;
+}
+
+.skills {
+  height: 100vh;
+  background-color: var(--background);
+  transition: all 1s ease-out;
 }/*# sourceMappingURL=main.css.map */
