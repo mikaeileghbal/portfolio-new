@@ -31,7 +31,8 @@
     border-bottom-left-radius: 45px;
     border-bottom-right-radius: 45px;
     box-shadow: 0 20px 15px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.19);
-    background-color: #879f87;
+    background-color: var(--background);
+    transition: all 1s ease-out;
   }
 }
 

@@ -23,7 +23,7 @@ window.addEventListener("scroll", function (e) {
 
 function setHero() {
   const scrillPos = window.scrollY;
-  if (scrollY > 3450) {
+  if (scrollY > 2900) {
     document.querySelector(".hero-wrap").style.display = "none";
   } else {
     document.querySelector(".hero-wrap").style.display = "block";
@@ -33,7 +33,7 @@ function setHero() {
 function setTheme() {
   const scrillPos = window.scrollY;
   if (scrollY > 960 && scrollY < 3200) {
-    changeThemeToDark();
+    changeThemeToDark(0);
   } else {
     changeThemeToLight();
   }
@@ -41,7 +41,7 @@ function setTheme() {
 
 function setProject() {
   const scrollPos = window.scrollY;
-  if (scrollPos > 960 && scrollPos < 3200) {
+  if (scrollPos > 960 && scrollPos < 2900) {
     showProjec();
     //showArticle(0);
   } else {
@@ -52,27 +52,41 @@ function setProject() {
 
 function setArticle() {
   const scrollPos = window.scrollY;
+  const article = document.querySelector(".work article");
+  const articleHeight = article.clientHeight;
+
+  console.log(articleHeight);
+
   hideArticle(0);
   hideArticle(1);
   hideArticle(2);
 
-  if (scrollPos > 960 && scrollPos < 1800) {
+  if (scrollPos > 960 && scrollPos < 960 + articleHeight) {
     showArticle(0);
-  } else if (scrollPos >= 1800 && scrollPos < 2600) {
+  } else if (
+    scrollPos >= 960 + articleHeight &&
+    scrollPos < 960 + 2 * articleHeight
+  ) {
     showArticle(1);
-  } else if (scrollPos >= 2600 && scrollPos < 3200) {
+  } else if (
+    scrollPos >= 960 + 2 * articleHeight &&
+    scrollPos < 960 + 3 * articleHeight
+  ) {
     showArticle(2);
   }
 }
 
 function changeThemeToDark() {
   let root = document.documentElement;
+  document.querySelector(".hero-wrap .container").style.transitionDelay =
+    "0.5s";
   root.style.setProperty("--textColor", theme.dark.color);
   root.style.setProperty("--background", theme.dark.background);
 }
 
 function changeThemeToLight() {
   let root = document.documentElement;
+  document.querySelector(".hero-wrap .container").style.transitionDelay = "";
   root.style.setProperty("--textColor", theme.light.color);
   root.style.setProperty("--background", theme.light.background);
 }
@@ -134,6 +148,7 @@ function animateHero() {
   }
 }
 
+// mouse tail
 let mouseTail = document.querySelector(".mouse-tail");
 
 document.addEventListener("mousemove", moveMouseTail);
@@ -162,6 +177,23 @@ logo.addEventListener("mouseenter", () => {
 
 logo.addEventListener("mouseleave", () => {
   mouseTail.classList.remove("rectangle");
+});
+
+const mainImages = document.querySelectorAll(".main-image");
+console.log(mainImages);
+
+mainImages.forEach((mainImage) => {
+  mainImage.addEventListener("mouseenter", () => {
+    mainImage.previousElementSibling.firstElementChild.style.opacity = "0.6";
+    mainImage.nextElementSibling.firstElementChild.style.opacity = "0.6";
+    mouseTail.classList.add("image");
+  });
+
+  mainImage.addEventListener("mouseleave", () => {
+    mainImage.previousElementSibling.firstElementChild.style.opacity = "0";
+    mainImage.nextElementSibling.firstElementChild.style.opacity = "0";
+    mouseTail.classList.remove("image");
+  });
 });
 
 // footer animations
