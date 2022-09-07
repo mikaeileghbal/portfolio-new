@@ -424,6 +424,7 @@ article .project-container {
   bottom: 0;
   opacity: 0;
   display: none;
+  z-index: 5;
 }
 article .images {
   display: flex;
@@ -589,6 +590,18 @@ article .images .main-image:hover {
   height: 120px;
   width: 120px;
   background-color: #171216;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mouse-tail.image::before {
+  content: "";
+  width: 80px;
+  height: 80px;
+  -webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+          clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  border-radius: 100%;
+  background-color: white;
 }
 
 .footer {
