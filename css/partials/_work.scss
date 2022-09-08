@@ -15,7 +15,7 @@
 article {
   //opacity: 0;
   //background-color: var(--background);
-  border: 10px solid red;
+  //border: 10px solid red;
   padding: 2em;
   position: relative;
   width: 100vw;
@@ -37,9 +37,10 @@ article {
     display: none;
     z-index: 5;
   }
+
   .images {
     display: flex;
-    padding: 18vh 6em 6em;
+    padding: 12% 6em 6em;
     justify-content: center;
     align-items: center;
     perspective: 1000;
@@ -62,13 +63,13 @@ article {
 
     .first-image {
       transform: translateY(0) scale3d(0.6, 1, 1) rotateZ(6deg)
-        translateX(100px);
+        translateX(180px);
       animation: appearSide 0.4s ease-out 0.5s;
       animation-fill-mode: forwards;
     }
     .second-image {
       transform: translateY(0) scale3d(0.6, 1, 1) rotateZ(-6deg)
-        translateX(-100px);
+        translateX(-180px);
       animation: appearSide2 0.4s ease-out 0.5s;
       animation-fill-mode: forwards;
     }
@@ -128,7 +129,7 @@ article {
   from {
     opacity: 0;
     transform: translateY(100px) scale3d(0.6, 0.6, 1) rotateZ(-0deg)
-      translateX(100px);
+      translateX(180px);
   }
   to {
     opacity: 1;
@@ -139,7 +140,7 @@ article {
   from {
     opacity: 0;
     transform: translateY(100px) scale3d(0.6, 0.6, 1) rotateZ(0deg)
-      translateX(-100px);
+      translateX(-180px);
   }
   to {
     opacity: 1;
