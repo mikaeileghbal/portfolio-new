@@ -55,8 +55,6 @@ function setArticle() {
   const article = document.querySelector(".work article");
   const articleHeight = article.clientHeight;
 
-  console.log(articleHeight);
-
   hideArticle(0);
   hideArticle(1);
   hideArticle(2);
@@ -97,18 +95,32 @@ function showProjec() {
 }
 
 function hideProject() {
-  document.querySelector(".project").style.display = "none";
   document.querySelector(".project").style.opacity = "0";
+  document.querySelector(".project").style.display = "none";
 }
 
 function showArticle(index) {
+  document.querySelectorAll(".main-image")[index].classList.add("animate");
+  document.querySelectorAll(".first-image")[index].classList.add("animate");
+  document.querySelectorAll(".second-image")[index].classList.add("animate");
+
+  document.querySelectorAll(".first-image")[index].style.display = "block";
+  document.querySelectorAll(".second-image")[index].style.display = "block";
+  document.querySelectorAll(".main-image")[index].style.display = "block";
+
   document.querySelectorAll(".project-container")[index].style.display =
     "block";
-  document.querySelectorAll(".project-container")[index].style.opacity = "1";
 }
+
 function hideArticle(index) {
+  document.querySelectorAll(".main-image")[index].classList.remove("animate");
+  document.querySelectorAll(".first-image")[index].classList.remove("animate");
+  document.querySelectorAll(".second-image")[index].classList.remove("animate");
+
+  document.querySelectorAll(".first-image")[index].style.display = "none";
+  document.querySelectorAll(".second-image")[index].style.display = "none";
+  document.querySelectorAll(".main-image")[index].style.display = "none";
   document.querySelectorAll(".project-container")[index].style.display = "none";
-  document.querySelectorAll(".project-container")[index].style.opacity = "0";
 }
 
 function animateHero() {
@@ -180,7 +192,6 @@ logo.addEventListener("mouseleave", () => {
 });
 
 const mainImages = document.querySelectorAll(".main-image");
-console.log(mainImages);
 
 mainImages.forEach((mainImage) => {
   mainImage.addEventListener("mouseenter", () => {
@@ -218,7 +229,7 @@ window.addEventListener("scroll", (e) => {
 });
 
 const navButton = document.querySelector(".nav-button");
-console.log(navButton);
+
 navButton.addEventListener("click", (e) => {
   const overlayMenu = document.querySelector(".overlay-menu");
   const overlayClasses = overlayMenu.classList;
@@ -230,7 +241,12 @@ navButton.addEventListener("click", (e) => {
 
   links.forEach((link, index) => {
     link.classList.toggle("animate");
-    link.style.animationDelay = `${1 + index / 10}s`;
+    //link.style.animationDelay = `${1 + index / 10}s`;
+    if (link.classList.contains("animate")) {
+      link.style.transitionDelay = `${1 + index / 10}s`;
+    } else {
+      link.style.transitionDelay = `0s`;
+    }
   });
 
   scrollHide(overlayClasses.contains("open"));
@@ -242,12 +258,12 @@ function scrollHide(open) {
     document.body.style.overflow = "hidden";
   } else {
     document.body.style.height = "auto";
-    document.body.style.overflow = "unset";
+    document.body.style.overflow = "overlay";
   }
 }
 
 const marqs = document.querySelectorAll(".marq");
-console.log(marqs);
+
 const scrollers = document.querySelectorAll(".scroller");
 
 setInterval(() => {

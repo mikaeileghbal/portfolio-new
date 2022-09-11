@@ -145,11 +145,12 @@ header .container {
   justify-content: center;
   align-items: center;
   transform: translateX(100%);
-  transition: all 1.2s ease;
+  transition: all 1.2s ease 1s;
   z-index: 20000;
 }
 .overlay-menu.open {
   transform: translateX(0);
+  transition: all 1.2s ease;
 }
 .overlay-menu .link-wrapper {
   padding: 3em 0;
@@ -176,12 +177,11 @@ header .container {
 .overlay-menu .overlay-link span {
   display: inline-block;
   transform: translateY(100%);
+  transition: all 1s ease-out 0.1s;
 }
 .overlay-menu .overlay-link span.animate {
-  -webkit-animation: slideUp 1.2s ease;
-          animation: slideUp 1.2s ease;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
+  transform: translateY(0);
+  transition: all 1.2s ease-out;
 }
 
 @-webkit-keyframes slideUp {
@@ -199,6 +199,22 @@ header .container {
   }
   to {
     transform: translateY(0);
+  }
+}
+@-webkit-keyframes slideDown {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100px);
+  }
+}
+@keyframes slideDown {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100px);
   }
 }
 .hero-wrap {
@@ -406,6 +422,7 @@ header .container {
 }
 
 article {
+  border: 10px solid red;
   padding: 2em;
   position: relative;
   width: 100vw;
@@ -423,8 +440,7 @@ article .project-container {
   top: 0;
   right: 0;
   bottom: 0;
-  opacity: 0;
-  display: none;
+  opacity: 1;
   z-index: 5;
 }
 article .images {
@@ -446,21 +462,24 @@ article .images .second-image {
   height: 300px;
   opacity: 0;
   position: relative;
-  transform-style: preserve-3d;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
 }
 article .images .first-image {
-  transform: translateY(0) scale3d(0.6, 1, 1) rotateZ(6deg) translateX(180px);
-  -webkit-animation: appearSide 0.4s ease-out 0.5s;
-          animation: appearSide 0.4s ease-out 0.5s;
+  opacity: 0;
+  transform-origin: 100% 100%;
+}
+article .images .first-image.animate {
+  -webkit-animation: appearSide 0.4s ease-in-out 0.5s;
+          animation: appearSide 0.4s ease-in-out 0.5s;
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
 }
 article .images .second-image {
-  transform: translateY(0) scale3d(0.6, 1, 1) rotateZ(-6deg) translateX(-180px);
-  -webkit-animation: appearSide2 0.4s ease-out 0.5s;
-          animation: appearSide2 0.4s ease-out 0.5s;
+  opacity: 0;
+  transform-origin: 0% 100%;
+}
+article .images .second-image.animate {
+  -webkit-animation: appearSide2 0.4s ease-in-out 0.5s;
+          animation: appearSide2 0.4s ease-in-out 0.5s;
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
 }
@@ -472,11 +491,16 @@ article .images .main-image {
   box-shadow: 6px 6px 20px 0 rgba(0, 0, 0, 0.61);
   transform-style: preserve-3d;
   transition: all 0.4s ease-out;
-  -webkit-animation: appear 0.4s ease-in-out;
-          animation: appear 0.4s ease-in-out;
 }
 article .images .main-image:hover {
+  display: block;
   transform: scale3d(1.12, 1.12, 1.12);
+}
+article .images .main-image.animate {
+  -webkit-animation: appear 0.4s ease-in-out;
+          animation: appear 0.4s ease-in-out;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
 }
 
 .slider {
@@ -525,41 +549,41 @@ article .images .main-image:hover {
 @-webkit-keyframes appearSide {
   from {
     opacity: 0;
-    transform: translateY(100px) scale3d(0.6, 0.6, 1) rotateZ(0deg) translateX(180px);
+    transform: translate3d(50%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale3d(1, 1, 1) rotateZ(-6deg) translateX(20px);
+    transform: translate3d(14%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-6deg) skew(0deg, 0deg);
   }
 }
 @keyframes appearSide {
   from {
     opacity: 0;
-    transform: translateY(100px) scale3d(0.6, 0.6, 1) rotateZ(0deg) translateX(180px);
+    transform: translate3d(50%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale3d(1, 1, 1) rotateZ(-6deg) translateX(20px);
+    transform: translate3d(14%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-6deg) skew(0deg, 0deg);
   }
 }
 @-webkit-keyframes appearSide2 {
   from {
     opacity: 0;
-    transform: translateY(100px) scale3d(0.6, 0.6, 1) rotateZ(0deg) translateX(-180px);
+    transform: translate3d(-50%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(6deg) skew(0deg, 0deg);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale3d(1, 1, 1) rotateZ(6deg) translateX(-20px);
+    transform: translate3d(-14%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(6deg) skew(0deg, 0deg);
   }
 }
 @keyframes appearSide2 {
   from {
     opacity: 0;
-    transform: translateY(100px) scale3d(0.6, 0.6, 1) rotateZ(0deg) translateX(-180px);
+    transform: translate3d(-50%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(6deg) skew(0deg, 0deg);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale3d(1, 1, 1) rotateZ(6deg) translateX(-20px);
+    transform: translate3d(-14%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(6deg) skew(0deg, 0deg);
   }
 }
 .mouse-tail {

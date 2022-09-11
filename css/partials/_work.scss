@@ -15,7 +15,7 @@
 article {
   //opacity: 0;
   //background-color: var(--background);
-  //border: 10px solid red;
+  border: 10px solid red;
   padding: 2em;
   position: relative;
   width: 100vw;
@@ -33,8 +33,8 @@ article {
     top: 0;
     right: 0;
     bottom: 0;
-    opacity: 0;
-    display: none;
+    opacity: 1;
+    //display: none;
     z-index: 5;
   }
 
@@ -57,21 +57,32 @@ article {
       height: 300px;
       opacity: 0;
       position: relative;
-      transform-style: preserve-3d;
-      animation-fill-mode: forwards;
+      //transform-style: preserve-3d;
     }
 
     .first-image {
-      transform: translateY(0) scale3d(0.6, 1, 1) rotateZ(6deg)
-        translateX(180px);
-      animation: appearSide 0.4s ease-out 0.5s;
-      animation-fill-mode: forwards;
+      opacity: 0;
+      transform-origin: 100% 100%;
+      // transform: translateY(0) scale3d(0.6, 1, 1) rotateZ(6deg)
+      //   translateX(180px);
+      // animation: appearSide 0.4s ease-out 0.5s;
+      // animation-fill-mode: forwards;
+      &.animate {
+        animation: appearSide 0.4s ease-in-out 0.5s;
+        animation-fill-mode: forwards;
+      }
     }
     .second-image {
-      transform: translateY(0) scale3d(0.6, 1, 1) rotateZ(-6deg)
-        translateX(-180px);
-      animation: appearSide2 0.4s ease-out 0.5s;
-      animation-fill-mode: forwards;
+      opacity: 0;
+      transform-origin: 0% 100%;
+      // transform: translate3d(-50%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg)
+      //   rotateY(0deg) rotateZ(6deg) skew(0deg, 0deg);
+      // animation: appearSide2 0.4s ease-out 0.5s;
+      // animation-fill-mode: forwards;
+      &.animate {
+        animation: appearSide2 0.4s ease-in-out 0.5s;
+        animation-fill-mode: forwards;
+      }
     }
 
     .main-image {
@@ -81,12 +92,25 @@ article {
       margin-top: -16px;
       box-shadow: 6px 6px 20px 0 rgba(0, 0, 0, 0.61);
       transform-style: preserve-3d;
+      //opacity: 0;
+      //transform: translateY(150px) scale(0.8);
       transition: all 0.4s ease-out;
-      animation: appear 0.4s ease-in-out;
+
+      //transition: all 1s ease-out;
       //animation-fill-mode: forwards;
 
+      // animation: appear 0.4s ease-in-out;
+      // animation-fill-mode: backwards;
+      // animation-direction: reverse;
+
       &:hover {
+        display: block;
         transform: scale3d(1.12, 1.12, 1.12);
+      }
+
+      &.animate {
+        animation: appear 0.4s ease-in-out;
+        animation-fill-mode: forwards;
       }
     }
   }
@@ -128,22 +152,24 @@ article {
 @keyframes appearSide {
   from {
     opacity: 0;
-    transform: translateY(100px) scale3d(0.6, 0.6, 1) rotateZ(-0deg)
-      translateX(180px);
+    transform: translate3d(50%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg)
+      rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale3d(1, 1, 1) rotateZ(-6deg) translateX(20px);
+    transform: translate3d(14%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg)
+      rotateY(0deg) rotateZ(-6deg) skew(0deg, 0deg);
   }
 }
 @keyframes appearSide2 {
   from {
     opacity: 0;
-    transform: translateY(100px) scale3d(0.6, 0.6, 1) rotateZ(0deg)
-      translateX(-180px);
+    transform: translate3d(-50%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg)
+      rotateY(0deg) rotateZ(6deg) skew(0deg, 0deg);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale3d(1, 1, 1) rotateZ(6deg) translateX(-20px);
+    transform: translate3d(-14%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg)
+      rotateY(0deg) rotateZ(6deg) skew(0deg, 0deg);
   }
 }
