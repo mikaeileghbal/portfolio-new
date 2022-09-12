@@ -100,27 +100,74 @@ function hideProject() {
 }
 
 function showArticle(index) {
-  document.querySelectorAll(".main-image")[index].classList.add("animate");
-  document.querySelectorAll(".first-image")[index].classList.add("animate");
-  document.querySelectorAll(".second-image")[index].classList.add("animate");
+  console.log(index);
+  document.querySelectorAll(".main-image")[index].style.transform =
+    "translate3d(0px, 0vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)";
 
-  document.querySelectorAll(".first-image")[index].style.display = "block";
-  document.querySelectorAll(".second-image")[index].style.display = "block";
-  document.querySelectorAll(".main-image")[index].style.display = "block";
+  document.querySelectorAll(".first-image")[index].style.transform =
+    "translate3d(14%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-6deg) skew(0deg, 0deg)";
+  document.querySelectorAll(".second-image")[index].style.transform =
+    "translate3d(-14%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(6deg) skew(0deg, 0deg)";
 
-  document.querySelectorAll(".project-container")[index].style.display =
-    "block";
+  document.querySelectorAll(".main-image")[index].style.opacity = "1";
+  document.querySelectorAll(".first-image")[index].style.opacity = "1";
+  document.querySelectorAll(".second-image")[index].style.opacity = "1";
+
+  document.querySelectorAll(".main-image")[index].style.transitionDelay =
+    "0.0s";
+  document.querySelectorAll(".first-image")[index].style.transitionDelay =
+    "0.4s";
+  document.querySelectorAll(".second-image")[index].style.transitionDelay =
+    "0.4s";
+
+  document.querySelectorAll("article")[index].style.zIndex = "5000";
+  document.querySelectorAll(".main-image")[index].style.zIndex = "500";
+  console.log(document.querySelectorAll("article")[index]);
+
+  console.log(document.querySelectorAll(".main-image img")[index]);
+
+  // document.querySelectorAll(".main-image img")[index].style.transform =
+  //   "translate3d(0px, 0%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);";
+  // document.querySelectorAll(".first-image img")[index].style.transform =
+  //   "translate3d(0px, 0%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);";
+  // document.querySelectorAll(".second-image img")[index].style.transform =
+  //   "translate3d(0px, 0%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);";
+
+  //document.querySelectorAll(".first-image")[index].style.display = "block";
+  //document.querySelectorAll(".second-image")[index].style.display = "block";
+  //document.querySelectorAll(".main-image")[index].style.display = "block";
+
+  //document.querySelectorAll(".project-container")[index].style.display ="block";
 }
 
 function hideArticle(index) {
-  document.querySelectorAll(".main-image")[index].classList.remove("animate");
-  document.querySelectorAll(".first-image")[index].classList.remove("animate");
-  document.querySelectorAll(".second-image")[index].classList.remove("animate");
+  document.querySelectorAll(".main-image")[index].style.transform =
+    "translate3d(0px, 50vh, 0px) scale3d(0.4, 0.4, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)";
+  document.querySelectorAll(".first-image")[index].style.transform =
+    "translate3d(50%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-6deg) skew(0deg, 0deg)";
+  document.querySelectorAll(".second-image")[index].style.transform =
+    "translate3d(-50%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(6deg) skew(0deg, 0deg)";
 
-  document.querySelectorAll(".first-image")[index].style.display = "none";
-  document.querySelectorAll(".second-image")[index].style.display = "none";
-  document.querySelectorAll(".main-image")[index].style.display = "none";
-  document.querySelectorAll(".project-container")[index].style.display = "none";
+  document.querySelectorAll(".main-image")[index].style.opacity = "0";
+  document.querySelectorAll(".first-image")[index].style.opacity = "0";
+  document.querySelectorAll(".second-image")[index].style.opacity = "0";
+
+  document.querySelectorAll(".main-image")[index].style.transitionDelay = "0s";
+  document.querySelectorAll(".first-image")[index].style.transitionDelay = "0s";
+  document.querySelectorAll(".second-image")[index].style.transitionDelay =
+    "0s";
+
+  document.querySelectorAll("article")[index].style.zIndex = "0";
+  document.querySelectorAll(".main-image")[index].style.zIndex = "0";
+
+  // document.querySelectorAll(".main-image img")[index].style.transform =
+  //   "translate3d(0px, 0%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);";
+  // document.querySelectorAll(".first-image img")[index].style.transform =
+  //   "translate3d(0px, 100%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);";
+  // document.querySelectorAll(".second-image img")[index].style.transform =
+  //   "translate3d(0px, 100%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);";
+
+  //document.querySelectorAll(".project-container")[index].style.display = "none";
 }
 
 function animateHero() {
@@ -197,35 +244,38 @@ mainImages.forEach((mainImage) => {
   mainImage.addEventListener("mouseenter", () => {
     mainImage.previousElementSibling.firstElementChild.style.opacity = "0.6";
     mainImage.nextElementSibling.firstElementChild.style.opacity = "0.6";
+    mainImage.style.transform =
+      "translate3d(0px, 0vh, 0px) scale3d(1.12, 1.12, 1.12) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)";
     mouseTail.classList.add("image");
   });
 
   mainImage.addEventListener("mouseleave", () => {
     mainImage.previousElementSibling.firstElementChild.style.opacity = "0";
     mainImage.nextElementSibling.firstElementChild.style.opacity = "0";
+    mainImage.style.transform =
+      "translate3d(0px, 0vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)";
     mouseTail.classList.remove("image");
   });
 });
 
 // footer animations
 window.addEventListener("scroll", (e) => {
-  const postion = window.scrollY;
-  const popup = document.querySelector(".popup");
-  const popupTop = document.querySelector(".popup.top");
-  const footerImage = document.querySelector(".footer-image");
-
-  if (postion > 1700) {
-    popup.add("show");
-    popupTop.classList.add("show");
-  } else {
-    popup.remove("show");
-    popupTop.classList.remove("show");
-  }
-  if (postion > 2360) {
-    footerImage.classList.add("show");
-  } else {
-    footerImage.classList.remove("show");
-  }
+  //const postion = window.scrollY;
+  // const popup = document.querySelector(".popup");
+  // const popupTop = document.querySelector(".popup.top");
+  // const footerImage = document.querySelector(".footer-image");
+  // if (postion > 1700) {
+  //   popup.add("show");
+  //   popupTop.classList.add("show");
+  // } else {
+  //   popup.remove("show");
+  //   popupTop.classList.remove("show");
+  // }
+  // if (postion > 2360) {
+  //   footerImage.classList.add("show");
+  // } else {
+  //   footerImage.classList.remove("show");
+  // }
 });
 
 const navButton = document.querySelector(".nav-button");
