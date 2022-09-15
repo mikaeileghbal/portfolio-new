@@ -61,17 +61,23 @@ function init() {
       hideArticle(2);
 
       if (scrollPos > 960 && scrollPos < 960 + articleHeight) {
-        showArticle(0);
+        setTimeout(() => {
+          showArticle(0);
+        }, 0);
       } else if (
         scrollPos >= 960 + articleHeight &&
         scrollPos < 960 + 2 * articleHeight
       ) {
-        showArticle(1);
+        setTimeout(() => {
+          showArticle(1);
+        }, 0);
       } else if (
         scrollPos >= 960 + 2 * articleHeight &&
         scrollPos < 960 + 3 * articleHeight
       ) {
-        showArticle(2);
+        setTimeout(() => {
+          showArticle(2);
+        }, 0);
       }
     }
 
@@ -116,6 +122,14 @@ function init() {
       firstImages[index].style.transitionDelay = "0.5s";
       secondImages[index].style.transitionDelay = "0.5s";
 
+      document.querySelectorAll(".main-image img")[index].style.opacity = "1";
+      document.querySelectorAll(".main-image img")[index].style.transition =
+        "0.6s ease-out";
+      document.querySelectorAll(".main-image img")[
+        index
+      ].style.transitionDelay = "0.5s";
+      console.log(document.querySelectorAll(".main-image img"));
+
       document.querySelectorAll("article")[index].style.zIndex = "5000";
       mainImages[index].style.zIndex = "500";
       console.log(document.querySelectorAll("article")[index]);
@@ -125,11 +139,14 @@ function init() {
 
     function hideArticle(index) {
       mainImages[index].style.transform =
-        "translate3d(0px, 50vh, 0px) scale3d(0.4, 0.4, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)";
+        "translate3d(0px, 20vh, 0px) scale3d(0.8, 0.8, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)";
       firstImages[index].style.transform =
         "translate3d(50%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-6deg) skew(0deg, 0deg)";
       secondImages[index].style.transform =
         "translate3d(-50%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(6deg) skew(0deg, 0deg)";
+
+      // document.querySelectorAll(".first-image img")[index].style.transform =
+      //   "translate3d(0px, 10%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)";
 
       mainImages[index].style.opacity = "0";
       firstImages[index].style.opacity = "0";
@@ -138,6 +155,13 @@ function init() {
       mainImages[index].style.transitionDelay = "0s";
       firstImages[index].style.transitionDelay = "0s";
       secondImages[index].style.transitionDelay = "0s";
+
+      document.querySelectorAll(".main-image img")[index].style.opacity = "0";
+      document.querySelectorAll(".main-image img")[index].style.transition =
+        "0.1s ease-out";
+      document.querySelectorAll(".main-image img")[
+        index
+      ].style.transitionDelay = "0s";
 
       document.querySelectorAll("article")[index].style.zIndex = "0";
       mainImages[index].style.zIndex = "0";
