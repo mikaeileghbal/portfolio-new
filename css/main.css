@@ -403,7 +403,7 @@ header .container {
 .about h2 {
   font-weight: 400;
   margin-top: 2em;
-  margin-bottom: 6em;
+  margin-bottom: 7em;
   font-size: 28px;
   color: var(--textColor);
   transition: all 0.2s ease-out 0.5s;
@@ -423,7 +423,6 @@ header .container {
 }
 
 article {
-  border: 10px solid red;
   padding: 2em;
   position: relative;
   width: 100vw;
