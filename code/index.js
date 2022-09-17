@@ -65,36 +65,42 @@ function init() {
     if (scrollPos <= 960 || scrollPos >= 960 + 3 * articleHeight)
       setArticle.enteredZone = 0;
 
-    if (scrollPos > 960 && scrollPos < 960 + articleHeight) {
+    if (articleFirstInView()) {
       if (setArticle.enteredZone !== 1) {
-        console.log("Zone:1 ", setArticle.enteredZone);
-        setArticle.enteredZone = 1;
-        setTimeout(() => {
-          showArticle(0);
-        }, 0);
+        setupArticle(0);
       }
-    } else if (
-      scrollPos >= 960 + articleHeight &&
-      scrollPos < 960 + 2 * articleHeight
-    ) {
+    } else if (articleSecondInView()) {
       if (setArticle.enteredZone !== 2) {
-        console.log("zone2: ", setArticle.enteredZone);
-        setArticle.enteredZone = 2;
-        setTimeout(() => {
-          showArticle(1);
-        }, 0);
+        setupArticle(1);
       }
-    } else if (
-      scrollPos >= 960 + 2 * articleHeight &&
-      scrollPos < 960 + 3 * articleHeight
-    ) {
+    } else if (articleThirdInView()) {
       if (setArticle.enteredZone !== 3) {
-        console.log("Zone3: ", setArticle.enteredZone);
-        setArticle.enteredZone = 3;
-        setTimeout(() => {
-          showArticle(2);
-        }, 0);
+        setupArticle(2);
       }
+    }
+
+    function articleFirstInView() {
+      return scrollPos > 960 && scrollPos < 960 + articleHeight;
+    }
+
+    function articleSecondInView() {
+      return (
+        scrollPos >= 960 + articleHeight && scrollPos < 960 + 2 * articleHeight
+      );
+    }
+
+    function articleThirdInView() {
+      return (
+        scrollPos >= 960 + 2 * articleHeight &&
+        scrollPos < 960 + 3 * articleHeight
+      );
+    }
+
+    function setupArticle(index) {
+      setArticle.enteredZone = index + 1;
+      setTimeout(() => {
+        showArticle(index);
+      }, 0);
     }
   }
 
@@ -142,16 +148,11 @@ function init() {
     firstImages[index].style.transitionDelay = "0.5s";
     secondImages[index].style.transitionDelay = "0.5s";
 
-    document.querySelectorAll(".main-image img")[index].style.opacity = "1";
-    document.querySelectorAll(".main-image img")[index].style.transition =
-      "0.6s ease-out";
-    document.querySelectorAll(".main-image img")[index].style.transitionDelay =
-      "0.5s";
-    console.log(document.querySelectorAll(".main-image img"));
+    mainImages[index].querySelector("img").style.opacity = "1";
+    mainImages[index].querySelector("img").style.transition = "0.6s ease-out";
+    mainImages[index].querySelector("img").style.transitionDelay = "0.5s";
 
     mainImages[index].style.zIndex = "500";
-
-    console.log(document.querySelectorAll(".main-image img")[index]);
   }
 
   function hideArticle(index) {
@@ -159,7 +160,7 @@ function init() {
     document.querySelectorAll("article")[index].style.visibility = "hidden";
 
     mainImages[index].style.transform =
-      "translate3d(0px, 20vh, 0px) scale3d(0.8, 0.8, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)";
+      "translate3d(0px, 10vh, 0px) scale3d(0.8, 0.8, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)";
     firstImages[index].style.transform =
       "translate3d(50%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-6deg) skew(0deg, 0deg)";
     secondImages[index].style.transform =
@@ -176,11 +177,9 @@ function init() {
     firstImages[index].style.transitionDelay = "0s";
     secondImages[index].style.transitionDelay = "0s";
 
-    document.querySelectorAll(".main-image img")[index].style.opacity = "0";
-    document.querySelectorAll(".main-image img")[index].style.transition =
-      "0.1s ease-out";
-    document.querySelectorAll(".main-image img")[index].style.transitionDelay =
-      "0s";
+    mainImages[index].querySelector("img").style.opacity = "0";
+    mainImages[index].querySelector("img").style.transition = "0.1s ease-out";
+    mainImages[index].querySelector("img").style.transitionDelay = "0s";
 
     mainImages[index].style.zIndex = "0";
   }
@@ -336,11 +335,3 @@ window.addEventListener("scroll", (e) => {
   //   footerImage.classList.remove("show");
   // }
 });
-
-const options = {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: "{'id':41088}",
-};
-
-fetch("url", options);
