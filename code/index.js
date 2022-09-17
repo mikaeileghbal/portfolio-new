@@ -13,6 +13,105 @@ const theme = {
 window.addEventListener("load", init);
 
 function init() {
+  // intersection observer begins
+  let options = {
+    root: null,
+    rootMargin: "0px",
+    threshold: [0.5],
+  };
+
+  let observer = new IntersectionObserver(manageArticles, options);
+
+  const articles = document.querySelectorAll("article");
+
+  articles.forEach((article) => {
+    observer.observe(article);
+  });
+
+  function manageArticles(entries, observer) {
+    entries.forEach((entry) => {
+      let element = entry.target;
+      console.log(entry.intersectionRatio);
+      console.log(element);
+
+      if (entry.intersectionRatio <= 0.5) {
+        console.log("hide");
+        hideArticle(element);
+      }
+      if (entry.intersectionRatio > 0.5) {
+        console.log("show");
+        setTimeout(() => {
+          showArticle(element);
+        }, 0);
+      }
+    });
+  }
+
+  function showArticle(article) {
+    const mainImage = article.querySelector(".main-image");
+    const firstImage = article.querySelector(".first-image");
+    const secondImage = article.querySelector(".second-image");
+
+    article.style.zIndex = "5000";
+    //article.style.visibility = "visible";
+
+    mainImage.style.transform =
+      "translate3d(0px, 0vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)";
+    firstImage.style.transform =
+      "translate3d(14%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-6deg) skew(0deg, 0deg)";
+    secondImage.style.transform =
+      "translate3d(-14%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(6deg) skew(0deg, 0deg)";
+
+    mainImage.style.opacity = "1";
+    firstImage.style.opacity = "1";
+    secondImage.style.opacity = "1";
+
+    mainImage.style.transitionDelay = "0.0s";
+    firstImage.style.transitionDelay = "0.5s";
+    secondImage.style.transitionDelay = "0.5s";
+
+    mainImage.querySelector("img").style.opacity = "1";
+    mainImage.querySelector("img").style.transition = "0.6s ease-out";
+    mainImage.querySelector("img").style.transitionDelay = "0.5s";
+
+    mainImage.style.zIndex = "500";
+  }
+
+  function hideArticle(article) {
+    const mainImage = article.querySelector(".main-image");
+    const firstImage = article.querySelector(".first-image");
+    const secondImage = article.querySelector(".second-image");
+
+    mainImage.style.transform =
+      "translate3d(0px, 10vh, 0px) scale3d(0.8, 0.8, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)";
+    firstImage.style.transform =
+      "translate3d(50%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-6deg) skew(0deg, 0deg)";
+    secondImage.style.transform =
+      "translate3d(-50%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(6deg) skew(0deg, 0deg)";
+
+    // document.querySelectorAll(".first-image img")[index].style.transform =
+    //   "translate3d(0px, 10%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)";
+
+    mainImage.style.opacity = "0";
+    firstImage.style.opacity = "0";
+    secondImage.style.opacity = "0";
+
+    mainImage.style.transitionDelay = "0s";
+    firstImage.style.transitionDelay = "0s";
+    secondImage.style.transitionDelay = "0s";
+
+    mainImage.querySelector("img").style.opacity = "0";
+    mainImage.querySelector("img").style.transition = "0.1s ease-out";
+    mainImage.querySelector("img").style.transitionDelay = "0s";
+
+    mainImage.style.zIndex = "0";
+
+    article.style.zIndex = "0";
+    //article.style.visibility = "hidden";
+  }
+
+  // intersection observer ends
+
   const heroWrap = document.querySelector(".hero-wrap");
   const heroContainer = document.querySelector(".hero-wrap .container");
   const mainImages = document.querySelectorAll(".main-image");
@@ -26,7 +125,7 @@ function init() {
     setHero(scrollPos);
     setTheme(scrollPos);
     setProject(scrollPos);
-    setArticle(scrollPos);
+    //setArticle(scrollPos);
   });
 
   function setHero(scrollPos) {
@@ -126,62 +225,6 @@ function init() {
   function hideProject() {
     document.querySelector(".project").style.opacity = "0";
     document.querySelector(".project").style.display = "none";
-  }
-
-  function showArticle(index) {
-    document.querySelectorAll("article")[index].style.zIndex = "5000";
-    document.querySelectorAll("article")[index].style.visibility = "visible";
-
-    mainImages[index].style.transform =
-      "translate3d(0px, 0vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)";
-
-    firstImages[index].style.transform =
-      "translate3d(14%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-6deg) skew(0deg, 0deg)";
-    secondImages[index].style.transform =
-      "translate3d(-14%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(6deg) skew(0deg, 0deg)";
-
-    mainImages[index].style.opacity = "1";
-    firstImages[index].style.opacity = "1";
-    secondImages[index].style.opacity = "1";
-
-    mainImages[index].style.transitionDelay = "0.0s";
-    firstImages[index].style.transitionDelay = "0.5s";
-    secondImages[index].style.transitionDelay = "0.5s";
-
-    mainImages[index].querySelector("img").style.opacity = "1";
-    mainImages[index].querySelector("img").style.transition = "0.6s ease-out";
-    mainImages[index].querySelector("img").style.transitionDelay = "0.5s";
-
-    mainImages[index].style.zIndex = "500";
-  }
-
-  function hideArticle(index) {
-    document.querySelectorAll("article")[index].style.zIndex = "0";
-    document.querySelectorAll("article")[index].style.visibility = "hidden";
-
-    mainImages[index].style.transform =
-      "translate3d(0px, 10vh, 0px) scale3d(0.8, 0.8, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)";
-    firstImages[index].style.transform =
-      "translate3d(50%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-6deg) skew(0deg, 0deg)";
-    secondImages[index].style.transform =
-      "translate3d(-50%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(6deg) skew(0deg, 0deg)";
-
-    // document.querySelectorAll(".first-image img")[index].style.transform =
-    //   "translate3d(0px, 10%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)";
-
-    mainImages[index].style.opacity = "0";
-    firstImages[index].style.opacity = "0";
-    secondImages[index].style.opacity = "0";
-
-    mainImages[index].style.transitionDelay = "0s";
-    firstImages[index].style.transitionDelay = "0s";
-    secondImages[index].style.transitionDelay = "0s";
-
-    mainImages[index].querySelector("img").style.opacity = "0";
-    mainImages[index].querySelector("img").style.transition = "0.1s ease-out";
-    mainImages[index].querySelector("img").style.transitionDelay = "0s";
-
-    mainImages[index].style.zIndex = "0";
   }
 
   function animateHero(scrollPos) {

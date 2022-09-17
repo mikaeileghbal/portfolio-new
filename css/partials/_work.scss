@@ -15,7 +15,7 @@
 article {
   //opacity: 0;
 
-  //border: 10px solid red;
+  border: 10px solid red;
   padding: 2em;
   position: relative;
   width: 100vw;
@@ -25,6 +25,9 @@ article {
   display: block;
   transition: all 1s ease-out;
 
+  &:first-of-type {
+    height: 100vh;
+  }
   .project-container {
     position: fixed;
 
