@@ -43,11 +43,15 @@ function init() {
 
       if (entry.intersectionRatio <= 0.5) {
         hideArticle(element);
+        setTimeout(() => {
+          element.querySelector(".images").style.display = "none";
+        }, 600);
       }
       if (entry.intersectionRatio > 0.5) {
+        element.querySelector(".images").style.display = "flex";
         setTimeout(() => {
           showArticle(element);
-        }, 0);
+        }, 100);
       }
     });
   }
@@ -72,7 +76,6 @@ function init() {
     const mainImg = mainImage.querySelector("img");
 
     article.style.zIndex = "5000";
-    //article.style.visibility = "visible";
 
     mainImage.style.transform =
       "translate3d(0px, 0vh, 0px) scale3d(1, 1, 1)   rotateZ(0deg) ";
@@ -161,11 +164,11 @@ function init() {
     animateHero(scrollPos);
     setHero(scrollPos);
 
-    setProject(scrollPos);
+    //setProject(scrollPos);
   });
 
   function setHero(scrollPos) {
-    if (scrollPos > 2900) {
+    if (scrollPos > 3200) {
       heroWrap.style.display = "none";
     } else {
       heroWrap.style.display = "block";
