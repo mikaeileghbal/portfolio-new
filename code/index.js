@@ -20,29 +20,47 @@ function init() {
     threshold: [0.5],
   };
 
+  let optionsWork = {
+    root: null,
+    rootMargin: "0px",
+    threshold: [0.165],
+  };
+
   let observer = new IntersectionObserver(manageArticles, options);
+  let observerWork = new IntersectionObserver(manageTheme, optionsWork);
 
   const articles = document.querySelectorAll("article");
+  const workWrap = document.querySelector(".work-wrap");
 
   articles.forEach((article) => {
     observer.observe(article);
   });
+  observerWork.observe(workWrap);
 
   function manageArticles(entries, observer) {
     entries.forEach((entry) => {
       let element = entry.target;
-      console.log(entry.intersectionRatio);
-      console.log(element);
 
       if (entry.intersectionRatio <= 0.5) {
-        console.log("hide");
         hideArticle(element);
       }
       if (entry.intersectionRatio > 0.5) {
-        console.log("show");
         setTimeout(() => {
           showArticle(element);
         }, 0);
+      }
+    });
+  }
+
+  function manageTheme(entries, observer) {
+    entries.forEach((entry) => {
+      let element = entry.target;
+      console.log(entry.intersectionRatio);
+      if (entry.intersectionRatio >= 0.165) {
+        changeThemeToDark();
+      }
+      if (entry.intersectionRatio < 0.165) {
+        changeThemeToLight();
       }
     });
   }
@@ -51,16 +69,17 @@ function init() {
     const mainImage = article.querySelector(".main-image");
     const firstImage = article.querySelector(".first-image");
     const secondImage = article.querySelector(".second-image");
+    const mainImg = mainImage.querySelector("img");
 
     article.style.zIndex = "5000";
     //article.style.visibility = "visible";
 
     mainImage.style.transform =
-      "translate3d(0px, 0vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)";
+      "translate3d(0px, 0vh, 0px) scale3d(1, 1, 1)   rotateZ(0deg) ";
     firstImage.style.transform =
-      "translate3d(14%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-6deg) skew(0deg, 0deg)";
+      "translate3d(14%, 0px, 0px) scale3d(1, 1, 1)   rotateZ(-6deg)";
     secondImage.style.transform =
-      "translate3d(-14%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(6deg) skew(0deg, 0deg)";
+      "translate3d(-14%, 0px, 0px) scale3d(1, 1, 1)   rotateZ(6deg)";
 
     mainImage.style.opacity = "1";
     firstImage.style.opacity = "1";
@@ -70,9 +89,9 @@ function init() {
     firstImage.style.transitionDelay = "0.5s";
     secondImage.style.transitionDelay = "0.5s";
 
-    mainImage.querySelector("img").style.opacity = "1";
-    mainImage.querySelector("img").style.transition = "0.6s ease-out";
-    mainImage.querySelector("img").style.transitionDelay = "0.5s";
+    mainImg.style.opacity = "1";
+    mainImg.style.transition = "0.6s ease-out";
+    mainImg.style.transitionDelay = "0.5s";
 
     mainImage.style.zIndex = "500";
   }
@@ -81,16 +100,19 @@ function init() {
     const mainImage = article.querySelector(".main-image");
     const firstImage = article.querySelector(".first-image");
     const secondImage = article.querySelector(".second-image");
+    const mainImg = mainImage.querySelector("img");
+    // const firstImg = firstImage.querySelector("img");
+    // const secondImg = secondImage.querySelector("img");
 
     mainImage.style.transform =
-      "translate3d(0px, 10vh, 0px) scale3d(0.8, 0.8, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)";
+      "translate3d(0px, 10vh, 0px) scale3d(0.8, 0.8, 1) rotateZ(0deg)";
     firstImage.style.transform =
-      "translate3d(50%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-6deg) skew(0deg, 0deg)";
+      "translate3d(50%, 0px, 0px) scale3d(1, 1, 1) rotateZ(-6deg)";
     secondImage.style.transform =
-      "translate3d(-50%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(6deg) skew(0deg, 0deg)";
+      "translate3d(-50%, 0px, 0px) scale3d(1, 1, 1) rotateZ(6deg) ";
 
     // document.querySelectorAll(".first-image img")[index].style.transform =
-    //   "translate3d(0px, 10%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)";
+    //   "translate3d(0px, 10%, 0px) scale3d(1, 1, 1) rotateZ(0deg) ";
 
     mainImage.style.opacity = "0";
     firstImage.style.opacity = "0";
@@ -100,14 +122,29 @@ function init() {
     firstImage.style.transitionDelay = "0s";
     secondImage.style.transitionDelay = "0s";
 
-    mainImage.querySelector("img").style.opacity = "0";
-    mainImage.querySelector("img").style.transition = "0.1s ease-out";
-    mainImage.querySelector("img").style.transitionDelay = "0s";
+    mainImg.style.opacity = "0";
+    mainImg.style.transition = "0.1s ease-out";
+    mainImg.style.transitionDelay = "0s";
 
     mainImage.style.zIndex = "0";
 
     article.style.zIndex = "0";
     //article.style.visibility = "hidden";
+  }
+
+  // set theme light or dark
+  function changeThemeToDark() {
+    let root = document.documentElement;
+    //heroContainer.style.transitionDelay = "0.5s";
+    root.style.setProperty("--textColor", theme.dark.color);
+    root.style.setProperty("--background", theme.dark.background);
+  }
+
+  function changeThemeToLight() {
+    let root = document.documentElement;
+    //heroContainer.style.transitionDelay = "";
+    root.style.setProperty("--textColor", theme.light.color);
+    root.style.setProperty("--background", theme.light.background);
   }
 
   // intersection observer ends
@@ -123,9 +160,8 @@ function init() {
 
     animateHero(scrollPos);
     setHero(scrollPos);
-    setTheme(scrollPos);
+
     setProject(scrollPos);
-    //setArticle(scrollPos);
   });
 
   function setHero(scrollPos) {
@@ -133,14 +169,6 @@ function init() {
       heroWrap.style.display = "none";
     } else {
       heroWrap.style.display = "block";
-    }
-  }
-
-  function setTheme(scrollPos) {
-    if (scrollPos > 960 && scrollPos < 3200) {
-      changeThemeToDark(0);
-    } else {
-      changeThemeToLight();
     }
   }
 
@@ -152,70 +180,56 @@ function init() {
     }
   }
 
-  setArticle.enteredZone = 0;
-  function setArticle(scrollPos) {
-    const article = document.querySelector(".work article");
-    const articleHeight = article.clientHeight;
+  // setArticle.enteredZone = 0;
+  // function setArticle(scrollPos) {
+  //   const article = document.querySelector(".work article");
+  //   const articleHeight = article.clientHeight;
 
-    if (setArticle.enteredZone !== 1) hideArticle(0);
-    if (setArticle.enteredZone !== 2) hideArticle(1);
-    if (setArticle.enteredZone !== 3) hideArticle(2);
+  //   if (setArticle.enteredZone !== 1) hideArticle(0);
+  //   if (setArticle.enteredZone !== 2) hideArticle(1);
+  //   if (setArticle.enteredZone !== 3) hideArticle(2);
 
-    if (scrollPos <= 960 || scrollPos >= 960 + 3 * articleHeight)
-      setArticle.enteredZone = 0;
+  //   if (scrollPos <= 960 || scrollPos >= 960 + 3 * articleHeight)
+  //     setArticle.enteredZone = 0;
 
-    if (articleFirstInView()) {
-      if (setArticle.enteredZone !== 1) {
-        setupArticle(0);
-      }
-    } else if (articleSecondInView()) {
-      if (setArticle.enteredZone !== 2) {
-        setupArticle(1);
-      }
-    } else if (articleThirdInView()) {
-      if (setArticle.enteredZone !== 3) {
-        setupArticle(2);
-      }
-    }
+  //   if (articleFirstInView()) {
+  //     if (setArticle.enteredZone !== 1) {
+  //       setupArticle(0);
+  //     }
+  //   } else if (articleSecondInView()) {
+  //     if (setArticle.enteredZone !== 2) {
+  //       setupArticle(1);
+  //     }
+  //   } else if (articleThirdInView()) {
+  //     if (setArticle.enteredZone !== 3) {
+  //       setupArticle(2);
+  //     }
+  //   }
 
-    function articleFirstInView() {
-      return scrollPos > 960 && scrollPos < 960 + articleHeight;
-    }
+  //   function articleFirstInView() {
+  //     return scrollPos > 960 && scrollPos < 960 + articleHeight;
+  //   }
 
-    function articleSecondInView() {
-      return (
-        scrollPos >= 960 + articleHeight && scrollPos < 960 + 2 * articleHeight
-      );
-    }
+  //   function articleSecondInView() {
+  //     return (
+  //       scrollPos >= 960 + articleHeight && scrollPos < 960 + 2 * articleHeight
+  //     );
+  //   }
 
-    function articleThirdInView() {
-      return (
-        scrollPos >= 960 + 2 * articleHeight &&
-        scrollPos < 960 + 3 * articleHeight
-      );
-    }
+  //   function articleThirdInView() {
+  //     return (
+  //       scrollPos >= 960 + 2 * articleHeight &&
+  //       scrollPos < 960 + 3 * articleHeight
+  //     );
+  //   }
 
-    function setupArticle(index) {
-      setArticle.enteredZone = index + 1;
-      setTimeout(() => {
-        showArticle(index);
-      }, 0);
-    }
-  }
-
-  function changeThemeToDark() {
-    let root = document.documentElement;
-    heroContainer.style.transitionDelay = "0.5s";
-    root.style.setProperty("--textColor", theme.dark.color);
-    root.style.setProperty("--background", theme.dark.background);
-  }
-
-  function changeThemeToLight() {
-    let root = document.documentElement;
-    heroContainer.style.transitionDelay = "";
-    root.style.setProperty("--textColor", theme.light.color);
-    root.style.setProperty("--background", theme.light.background);
-  }
+  //   function setupArticle(index) {
+  //     setArticle.enteredZone = index + 1;
+  //     setTimeout(() => {
+  //       showArticle(index);
+  //     }, 0);
+  //   }
+  // }
 
   function showProjec() {
     document.querySelector(".project").style.display = "block";
@@ -290,7 +304,7 @@ function init() {
   });
 
   mainImages.forEach((mainImage) => {
-    mainImage.addEventListener("mouseenter", () => {
+    mainImage.addEventListener("mouseover", () => {
       mainImage.previousElementSibling.firstElementChild.style.opacity = "0.6";
       mainImage.nextElementSibling.firstElementChild.style.opacity = "0.6";
       mainImage.style.transform =
@@ -298,7 +312,7 @@ function init() {
       mouseTail.classList.add("image");
     });
 
-    mainImage.addEventListener("mouseleave", () => {
+    mainImage.addEventListener("mouseout", () => {
       mainImage.previousElementSibling.firstElementChild.style.opacity = "0";
       mainImage.nextElementSibling.firstElementChild.style.opacity = "0";
       mainImage.style.transform =

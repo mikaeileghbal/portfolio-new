@@ -1,3 +1,7 @@
+.work-wrap {
+  //border: 2px solid red;
+}
+
 .project {
   position: fixed;
   display: none;
@@ -67,7 +71,7 @@ article {
       transform-style: preserve-3d;
       transition: 0.15s ease-out;
       overflow: hidden;
-      //background-color: #171216;
+      background-color: transparent;
       opacity: 0;
     }
 
@@ -83,8 +87,8 @@ article {
         //transform: translate3d(0px, 100%, 0px) scale3d(1, 1, 1) rotateX(0deg)
         //  rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
 
-        transform: translate3d(0px, 0%, 0px) scale3d(1, 1, 1) rotateX(0deg)
-          rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+        // transform: translate3d(0px, 0%, 0px) scale3d(1, 1, 1) rotateX(0deg)
+        //   rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
       }
     }
     .second-image {
