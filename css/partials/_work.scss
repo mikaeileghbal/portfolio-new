@@ -1,5 +1,7 @@
 .work-wrap {
-  //border: 2px solid red;
+  //border: 1px solid red;
+  //pointer-events: none;
+  //background-color: rgba(180, 0, 0, 0.5);
 }
 
 .project {
@@ -11,9 +13,12 @@
   left: 0;
   top: 0;
   pointer-events: none;
-  //background-color: var(--background);
-  padding: 2em;
+  //background-color: rgba(190, 0, 0, 0.3);
   transition: all 1s ease-out;
+}
+
+.project-container {
+  //background-color: rgba(180, 0, 0, 0.1);
 }
 
 article {
@@ -29,12 +34,8 @@ article {
   display: block;
   transition: all 1s ease-out;
 
-  &:first-of-type {
-    height: 100vh;
-  }
   .project-container {
     position: fixed;
-
     display: flex;
     align-items: center;
 
@@ -91,9 +92,9 @@ article {
         //   rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
       }
     }
+
     .second-image {
       transform-origin: 0% 100%;
-
       transform: translate3d(-50%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg)
         rotateY(0deg) rotateZ(6deg) skew(0deg, 0deg);
 
@@ -142,17 +143,6 @@ article {
   }
 }
 
-.slider {
-  position: absolute;
-  margin-left: 5em;
-  width: 40px;
-  height: 80px;
-  top: 50%;
-  transform: translateY(-50%);
-  border-radius: 50px;
-  border: 3px solid gray;
-}
-
 .img-overlay {
   position: absolute;
   z-index: 1;
@@ -165,26 +155,37 @@ article {
   transition: all 0.4s ease-out;
 }
 
-// img1
-// container active  transform: translate3d(14%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-6deg) skew(0deg, 0deg);
-// img active transform: translate3d(0px, 0%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+.slider {
+  position: absolute;
+  margin-left: 5em;
+  width: 40px;
+  height: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50px;
+  border: 3px solid gray;
+}
 
-// container not transform: translate3d(50%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-6deg) skew(0deg, 0deg);
-// img not transform: translate3d(0px, 100%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+.progress-wrap {
+  position: absolute;
+  bottom: 0;
+  height: 60px;
+  width: 100%;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-//===================================
+  .progress {
+    width: 80%;
+    height: 5px;
+    overflow: hidden;
 
-// main
-// container active transform: translate3d(0px, 0vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
-// img active transform: translate3d(0px, 0%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
-
-// container not transform: translate3d(0px, 50vh, 0px) scale3d(0.4, 0.4, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
-// img not transform: translate3d(0px, 101%, 0px) scale3d(1.5, 1.5, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
-
-//====================================
-// img 2
-// container active transform: translate3d(-14%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(6deg) skew(0deg, 0deg);
-// img active transform: translate3d(0px, 0%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
-
-// container not transform: translate3d(-50%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(6deg) skew(0deg, 0deg);
-// img not transform: translate3d(0px, 100%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background-color: var(--green);
+      border-radius: 3px;
+    }
+  }
+}
