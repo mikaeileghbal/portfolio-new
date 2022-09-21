@@ -117,7 +117,9 @@ function init() {
       let element = entry.target;
 
       if (entry.intersectionRatio >= 0.165) {
-        changeThemeToDark();
+        setTimeout(() => {
+          changeThemeToDark();
+        }, 400);
       }
       if (entry.intersectionRatio < 0.165) {
         changeThemeToLight();
@@ -146,21 +148,24 @@ function init() {
     firstImage.style.opacity = "1";
     secondImage.style.opacity = "1";
 
+    firstImage.style.transition = "opacity 0.8s, transform 1s";
+    secondImage.style.transition = "opacity 0.8s, transform 1s ";
+
     mainImage.style.transitionDelay = "0s";
-    firstImage.style.transitionDelay = "0.6s";
-    secondImage.style.transitionDelay = "0.6s";
+    firstImage.style.transitionDelay = "0.5s";
+    secondImage.style.transitionDelay = "0.5s";
 
     mainImg.style.opacity = "1";
-    mainImg.style.transition = "0.6s ease-out";
-    mainImg.style.transitionDelay = "0.5s";
+    mainImg.style.transition = "1.2s ease-out";
+    mainImg.style.transitionDelay = "0.6s";
 
     firstImg.style.transform =
       "translate3d(0%, 0vh, 0px) scale3d(1, 1, 1) rotateZ(0deg)";
     secondImg.style.transform =
       "translate3d(0%, 0vh, 0px) scale3d(1, 1, 1) rotateZ(0deg)";
 
-    firstImg.style.transitionDelay = "0.3s";
-    secondImg.style.transitionDelay = "0.3s";
+    firstImg.style.transitionDelay = "0.4s";
+    secondImg.style.transitionDelay = "0.4s";
 
     mainImage.style.zIndex = "500";
   }
@@ -190,22 +195,23 @@ function init() {
     secondImage.style.opacity = "0";
 
     mainImage.style.transitionDelay = "0s";
-    mainImage.style.transition = "opacity 0.4s 0.4s, transform 0.5s 1s";
-    firstImage.style.transitionDelay = "0.0s";
-    secondImage.style.transitionDelay = "0.0s";
+    mainImage.style.transition = "opacity 0.4s 0.4s, transform 0.5s 0.2s";
+
+    firstImage.style.transition = "opacity 0.3s, transform 0.3s ";
+    secondImage.style.transition = "opacity 0.3s, transform 0.3s";
 
     mainImg.style.opacity = "0";
-    mainImg.style.transition = "0.6s ease-out";
+    mainImg.style.transition = "0.3s ease-out";
     mainImg.style.transitionDelay = "0s";
 
     firstImg.style.transform =
-      "translate3d(20%, 25vh, 0px) scale3d(1, 1, 1) rotateZ(0deg)";
+      "translate3d(0%, 80%, 0px) scale3d(1, 1, 1) rotateZ(0deg)";
     secondImg.style.transform =
-      "translate3d(20%, 25vh, 0px) scale3d(1, 1, 1) rotateZ(0deg)";
+      "translate3d(0%, 80%, 0px) scale3d(1, 1, 1) rotateZ(0deg)";
     //mainImage.style.zIndex = "0";
 
-    firstImg.style.transitionDelay = "0.5s";
-    secondImg.style.transitionDelay = "0.5s";
+    firstImg.style.transitionDelay = "0.6s";
+    secondImg.style.transitionDelay = "0.6s";
 
     article.style.zIndex = "0";
     //article.style.visibility = "hidden";
