@@ -66,11 +66,11 @@ function init() {
           showArticle(element);
           element
             .querySelector(".main-image")
-            .addEventListener("mouseover", mouseOver);
+            .addEventListener("mouseenter", mouseOver);
 
           element
             .querySelector(".main-image")
-            .addEventListener("mouseout", mouseOut);
+            .addEventListener("mouseleave", mouseOut);
         }, 100);
       }
     });
@@ -130,6 +130,8 @@ function init() {
     const firstImage = article.querySelector(".first-image");
     const secondImage = article.querySelector(".second-image");
     const mainImg = mainImage.querySelector("img");
+    const firstImg = firstImage.querySelector("img");
+    const secondImg = secondImage.querySelector("img");
 
     article.style.zIndex = "5000";
 
@@ -144,13 +146,21 @@ function init() {
     firstImage.style.opacity = "1";
     secondImage.style.opacity = "1";
 
-    mainImage.style.transitionDelay = "0.0s";
-    firstImage.style.transitionDelay = "0.5s";
-    secondImage.style.transitionDelay = "0.5s";
+    mainImage.style.transitionDelay = "0s";
+    firstImage.style.transitionDelay = "0.6s";
+    secondImage.style.transitionDelay = "0.6s";
 
     mainImg.style.opacity = "1";
     mainImg.style.transition = "0.6s ease-out";
     mainImg.style.transitionDelay = "0.5s";
+
+    firstImg.style.transform =
+      "translate3d(0%, 0vh, 0px) scale3d(1, 1, 1) rotateZ(0deg)";
+    secondImg.style.transform =
+      "translate3d(0%, 0vh, 0px) scale3d(1, 1, 1) rotateZ(0deg)";
+
+    firstImg.style.transitionDelay = "0.3s";
+    secondImg.style.transitionDelay = "0.3s";
 
     mainImage.style.zIndex = "500";
   }
@@ -160,11 +170,13 @@ function init() {
     const firstImage = article.querySelector(".first-image");
     const secondImage = article.querySelector(".second-image");
     const mainImg = mainImage.querySelector("img");
+    const firstImg = firstImage.querySelector("img");
+    const secondImg = secondImage.querySelector("img");
     // const firstImg = firstImage.querySelector("img");
     // const secondImg = secondImage.querySelector("img");
 
     mainImage.style.transform =
-      "translate3d(0px, 10vh, 0px) scale3d(0.8, 0.8, 1) rotateZ(0deg)";
+      "translate3d(0px, 15vh, 0px) scale3d(0.8, 0.8, 1) rotateZ(0deg)";
     firstImage.style.transform =
       "translate3d(50%, 0px, 0px) scale3d(1, 1, 1) rotateZ(-6deg)";
     secondImage.style.transform =
@@ -178,14 +190,22 @@ function init() {
     secondImage.style.opacity = "0";
 
     mainImage.style.transitionDelay = "0s";
-    firstImage.style.transitionDelay = "0s";
-    secondImage.style.transitionDelay = "0s";
+    mainImage.style.transition = "opacity 0.4s 0.4s, transform 0.5s 1s";
+    firstImage.style.transitionDelay = "0.0s";
+    secondImage.style.transitionDelay = "0.0s";
 
     mainImg.style.opacity = "0";
-    mainImg.style.transition = "0.1s ease-out";
+    mainImg.style.transition = "0.6s ease-out";
     mainImg.style.transitionDelay = "0s";
 
-    mainImage.style.zIndex = "0";
+    firstImg.style.transform =
+      "translate3d(20%, 25vh, 0px) scale3d(1, 1, 1) rotateZ(0deg)";
+    secondImg.style.transform =
+      "translate3d(20%, 25vh, 0px) scale3d(1, 1, 1) rotateZ(0deg)";
+    //mainImage.style.zIndex = "0";
+
+    firstImg.style.transitionDelay = "0.5s";
+    secondImg.style.transitionDelay = "0.5s";
 
     article.style.zIndex = "0";
     //article.style.visibility = "hidden";
