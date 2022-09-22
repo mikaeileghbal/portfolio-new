@@ -71,7 +71,7 @@ function init() {
           element
             .querySelector(".main-image")
             .addEventListener("mouseleave", mouseOut);
-        }, 100);
+        }, 200);
       }
     });
   }
@@ -137,37 +137,33 @@ function init() {
 
     article.style.zIndex = "5000";
 
+    mainImage.style.zIndex = "500";
+
+    mainImage.style.transition = "0.8s ease-out";
+    mainImage.style.opacity = "1";
     mainImage.style.transform =
       "translate3d(0px, 0vh, 0px) scale3d(1, 1, 1)   rotateZ(0deg) ";
+
+    firstImage.style.transition = "opacity 0.8s 0.4s, transform 1s 0.4s";
+    firstImage.style.opacity = "1";
     firstImage.style.transform =
       "translate3d(14%, 0px, 0px) scale3d(1, 1, 1)   rotateZ(-6deg)";
+
+    secondImage.style.transition = "opacity 0.8s 0.4s, transform 1s 0.4s";
+    secondImage.style.opacity = "1";
     secondImage.style.transform =
       "translate3d(-14%, 0px, 0px) scale3d(1, 1, 1)   rotateZ(6deg)";
 
-    mainImage.style.opacity = "1";
-    firstImage.style.opacity = "1";
-    secondImage.style.opacity = "1";
-
-    firstImage.style.transition = "opacity 0.8s, transform 1s";
-    secondImage.style.transition = "opacity 0.8s, transform 1s ";
-
-    mainImage.style.transitionDelay = "0s";
-    firstImage.style.transitionDelay = "0.5s";
-    secondImage.style.transitionDelay = "0.5s";
-
     mainImg.style.opacity = "1";
-    mainImg.style.transition = "1.2s ease-out";
-    mainImg.style.transitionDelay = "0.6s";
+    mainImg.style.transition = "1.5s ease-out 0.5s";
 
+    firstImg.style.transition = "0.4s ease-out 0.4s";
     firstImg.style.transform =
       "translate3d(0%, 0vh, 0px) scale3d(1, 1, 1) rotateZ(0deg)";
+
+    secondImg.style.transition = "0.4s ease-out 0.4s";
     secondImg.style.transform =
       "translate3d(0%, 0vh, 0px) scale3d(1, 1, 1) rotateZ(0deg)";
-
-    firstImg.style.transitionDelay = "0.4s";
-    secondImg.style.transitionDelay = "0.4s";
-
-    mainImage.style.zIndex = "500";
   }
 
   function hideArticle(article) {
@@ -177,57 +173,47 @@ function init() {
     const mainImg = mainImage.querySelector("img");
     const firstImg = firstImage.querySelector("img");
     const secondImg = secondImage.querySelector("img");
-    // const firstImg = firstImage.querySelector("img");
-    // const secondImg = secondImage.querySelector("img");
 
+    mainImage.style.zIndex = "500";
+
+    mainImage.style.transition = "opacity 0.8s 0.2s, transform 0.8s 0.2s";
+    mainImage.style.opacity = "0";
     mainImage.style.transform =
       "translate3d(0px, 15vh, 0px) scale3d(0.8, 0.8, 1) rotateZ(0deg)";
+
+    firstImage.style.transition = "opacity 0.6s , transform 0.3s 0.3s";
+    firstImage.style.opacity = "0";
     firstImage.style.transform =
       "translate3d(50%, 0px, 0px) scale3d(1, 1, 1) rotateZ(-6deg)";
+
+    secondImage.style.transition = "opacity 0.6s  , transform 0.3s 0.3s";
+    secondImage.style.opacity = "0";
     secondImage.style.transform =
       "translate3d(-50%, 0px, 0px) scale3d(1, 1, 1) rotateZ(6deg) ";
 
-    // document.querySelectorAll(".first-image img")[index].style.transform =
-    //   "translate3d(0px, 10%, 0px) scale3d(1, 1, 1) rotateZ(0deg) ";
-
-    mainImage.style.opacity = "0";
-    firstImage.style.opacity = "0";
-    secondImage.style.opacity = "0";
-
-    mainImage.style.transitionDelay = "0s";
-    mainImage.style.transition = "opacity 0.4s 0.4s, transform 0.5s 0.2s";
-
-    firstImage.style.transition = "opacity 0.3s, transform 0.3s ";
-    secondImage.style.transition = "opacity 0.3s, transform 0.3s";
-
     mainImg.style.opacity = "0";
-    mainImg.style.transition = "0.3s ease-out";
-    mainImg.style.transitionDelay = "0s";
+    mainImg.style.transition = "0.5s ease-out";
 
+    firstImg.style.transitionDelay = "1.2s";
     firstImg.style.transform =
       "translate3d(0%, 80%, 0px) scale3d(1, 1, 1) rotateZ(0deg)";
+
+    secondImg.style.transitionDelay = "1.2s";
     secondImg.style.transform =
       "translate3d(0%, 80%, 0px) scale3d(1, 1, 1) rotateZ(0deg)";
-    //mainImage.style.zIndex = "0";
-
-    firstImg.style.transitionDelay = "0.6s";
-    secondImg.style.transitionDelay = "0.6s";
 
     article.style.zIndex = "0";
-    //article.style.visibility = "hidden";
   }
 
   // set theme light or dark
   function changeThemeToDark() {
     let root = document.documentElement;
-    //heroContainer.style.transitionDelay = "0.5s";
     root.style.setProperty("--textColor", theme.dark.color);
     root.style.setProperty("--background", theme.dark.background);
   }
 
   function changeThemeToLight() {
     let root = document.documentElement;
-    //heroContainer.style.transitionDelay = "";
     root.style.setProperty("--textColor", theme.light.color);
     root.style.setProperty("--background", theme.light.background);
   }

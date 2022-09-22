@@ -475,7 +475,6 @@ article .images .first-image {
 }
 article .images .first-image img {
   transform: "translate3d(0%, 80%, 0px) scale3d(1, 1, 1) rotateZ(0deg)";
-  transition: 0.4s ease-out;
 }
 article .images .second-image {
   transform-origin: 0% 100%;
@@ -483,7 +482,6 @@ article .images .second-image {
 }
 article .images .second-image img {
   transform: "translate3d(0%, 80%, 0px) scale3d(1, 1, 1) rotateZ(0deg)";
-  transition: 0.4s ease-out;
 }
 article .images .main-image {
   width: 500px;
@@ -682,5 +680,5 @@ article .images .main-image img {
 .skills {
   height: 100vh;
   background-color: var(--background);
-  transition: all 1s ease-out;
+  transition: all 0.5s ease-out;
 }/*# sourceMappingURL=main.css.map */
