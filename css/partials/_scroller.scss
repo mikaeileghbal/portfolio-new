@@ -76,11 +76,13 @@
 @keyframes scrollIn {
   0% {
     opacity: 0;
+    filter: blur(10px);
     transform: translate3d(30%, 0, 0);
   }
 
   100% {
     opacity: 1;
+    filter: blur(0px);
     transform: translate3d(0%, 0, 0);
   }
 }
@@ -88,11 +90,13 @@
 @keyframes scrollIn-revers {
   0% {
     opacity: 0;
+    filter: blur(10px);
     transform: translate3d(-30%, 0, 0);
   }
 
   100% {
     opacity: 1;
+    filter: blur(0px);
     transform: translate3d(0%, 0, 0);
   }
 }

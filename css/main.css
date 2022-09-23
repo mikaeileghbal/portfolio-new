@@ -1,4 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Zen+Antique+Soft&display=swap");
+.reactColors {
+  color: #d8dee9;
+  color: #b2b2b2;
+  color: #c5a5c5;
+  color: #353b45;
+  color: #5a9bcf;
+  color: #8dc891;
+  color: #d7deea;
+  color: #ff8b50;
+  color: #88c6be;
+  color: #fc929e;
+  color: #79b6f2;
+  color: #fac863;
+  color: #6699cc;
+  color: #fc929e;
+}
+
 :root {
   --pointer: #d2d8d2;
   --textColor: #171216;
@@ -352,40 +369,48 @@ header .container {
 @-webkit-keyframes scrollIn {
   0% {
     opacity: 0;
+    filter: blur(10px);
     transform: translate3d(30%, 0, 0);
   }
   100% {
     opacity: 1;
+    filter: blur(0px);
     transform: translate3d(0%, 0, 0);
   }
 }
 @keyframes scrollIn {
   0% {
     opacity: 0;
+    filter: blur(10px);
     transform: translate3d(30%, 0, 0);
   }
   100% {
     opacity: 1;
+    filter: blur(0px);
     transform: translate3d(0%, 0, 0);
   }
 }
 @-webkit-keyframes scrollIn-revers {
   0% {
     opacity: 0;
+    filter: blur(10px);
     transform: translate3d(-30%, 0, 0);
   }
   100% {
     opacity: 1;
+    filter: blur(0px);
     transform: translate3d(0%, 0, 0);
   }
 }
 @keyframes scrollIn-revers {
   0% {
     opacity: 0;
+    filter: blur(10px);
     transform: translate3d(-30%, 0, 0);
   }
   100% {
     opacity: 1;
+    filter: blur(0px);
     transform: translate3d(0%, 0, 0);
   }
 }
@@ -521,7 +546,7 @@ article .images .main-image img {
   top: 50%;
   transform: translateY(-50%);
   border-radius: 50px;
-  border: 3px solid gray;
+  border: 3px solid #3a2e39;
 }
 
 .progress-wrap {
@@ -544,6 +569,41 @@ article .images .main-image img {
   width: 0%;
   background-color: var(--green);
   border-radius: 3px;
+}
+
+.navigate {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 60px;
+  margin-right: 4em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.navigate-button {
+  width: 30px;
+  height: 50px;
+  background-color: #3a2e39;
+  border: none;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.navigate-button svg {
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+}
+.navigate-button svg.rotate {
+  transform: rotate(180deg);
+}
+.navigate-button:disabled {
+  opacity: 0.2;
 }
 
 .mouse-tail {

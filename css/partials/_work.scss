@@ -167,7 +167,7 @@ article {
   top: 50%;
   transform: translateY(-50%);
   border-radius: 50px;
-  border: 3px solid gray;
+  border: 3px solid #3a2e39;
 }
 
 .progress-wrap {
@@ -190,6 +190,46 @@ article {
       width: 0%;
       background-color: var(--green);
       border-radius: 3px;
+    }
+  }
+}
+
+.navigate {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 60px;
+  margin-right: 4em;
+  //background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &-button {
+    width: 30px;
+    height: 50px;
+    background-color: #3a2e39;
+    border: none;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+
+    svg {
+      width: 30px;
+      height: 30px;
+      background-color: transparent;
+
+      &.rotate {
+        transform: rotate(180deg);
+      }
+    }
+
+    &:disabled {
+      opacity: 0.2;
     }
   }
 }
