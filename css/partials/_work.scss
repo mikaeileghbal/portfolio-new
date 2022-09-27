@@ -166,8 +166,24 @@ article {
   height: 80px;
   top: 50%;
   transform: translateY(-50%);
-  border-radius: 50px;
+  border-radius: 30px;
   border: 3px solid #3a2e39;
+  overflow: hidden;
+  z-index: 2;
+
+  .slider-progress {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: #879f87;
+    border-radius: 30px;
+    transform: translate3d(0, 115%, 0);
+  }
 }
 
 .progress-wrap {

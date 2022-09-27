@@ -1,35 +1,19 @@
-// const prismColors = {
-//   char: "#D8DEE9",
-//   comment: "#B2B2B2",
-//   keyword: "#c5a5c5",
-//   lineHighlight: "#353b45", // colors.dark + extra lightness
-//   primitive: "#5a9bcf",
-//   string: "#8dc891",
-//   variable: "#d7deea",
-//   boolean: "#ff8b50",
-//   punctuation: "#88C6BE",
-//   tag: "#fc929e",
-//   function: "#79b6f2",
-//   className: "#FAC863",
-//   method: "#6699CC",
-//   operator: "#fc929e",
-// };
-
-const theme = {
-  light: {
-    color: "#171216",
-    background: "#879F87",
-  },
-  dark: {
-    color: "#FFF",
-    background: "#171216",
-    menuButton: "#3A2E39",
-  },
-};
-
 window.addEventListener("load", init);
 
 function init() {
+  // theme global
+  const theme = {
+    light: {
+      color: "#171216",
+      background: "#879F87",
+    },
+    dark: {
+      color: "#FFF",
+      background: "#171216",
+      menuButton: "#3A2E39",
+    },
+  };
+
   // intersection observer begins
   let options = {
     root: null,
@@ -70,12 +54,8 @@ function init() {
           .querySelector(".main-image")
           .removeEventListener("mouseleave", mouseOut);
         mouseTail.classList.remove("image");
-        setTimeout(() => {
-          //element.querySelector(".images").style.display = "none";
-        }, 600);
       }
       if (entry.intersectionRatio > 0.5) {
-        //element.querySelector(".images").style.display = "flex";
         setTimeout(() => {
           element.querySelector(".project-container").style.display = "flex";
         }, 00);
@@ -88,7 +68,7 @@ function init() {
           element
             .querySelector(".main-image")
             .addEventListener("mouseleave", mouseOut);
-        }, 50);
+        }, 300);
       }
     });
   }
@@ -111,23 +91,6 @@ function init() {
       "translate3d(0px, 0vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)";
     mouseTail.classList.remove("image");
   }
-  // mainImages.forEach((mainImage) => {
-  //   mainImage.addEventListener("mouseover", () => {
-  //     mainImage.previousElementSibling.firstElementChild.style.opacity = "0.6";
-  //     mainImage.nextElementSibling.firstElementChild.style.opacity = "0.6";
-  //     mainImage.style.transform =
-  //       "translate3d(0px, 0vh, 0px) scale3d(1.12, 1.12, 1.12) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)";
-  //     mouseTail.classList.add("image");
-  //   });
-
-  //   mainImage.addEventListener("mouseout", () => {
-  //     mainImage.previousElementSibling.firstElementChild.style.opacity = "0";
-  //     mainImage.nextElementSibling.firstElementChild.style.opacity = "0";
-  //     mainImage.style.transform =
-  //       "translate3d(0px, 0vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)";
-  //     mouseTail.classList.remove("image");
-  //   });
-  // });
 
   function manageTheme(entries, observer) {
     entries.forEach((entry) => {
@@ -153,6 +116,7 @@ function init() {
     const secondImg = secondImage.querySelector("img");
 
     article.style.zIndex = "5000";
+    mainImage.style.zIndex = "500";
 
     mainImage.style.transition = "0.4s ease-out";
     mainImage.style.opacity = "1";
@@ -183,8 +147,6 @@ function init() {
     secondImg.style.transition = "0.4s ease-out 0.4s";
     secondImg.style.transform =
       "translate3d(0%, 0%, 0px) scale3d(1, 1, 1) rotateZ(0deg)";
-
-    mainImage.style.zIndex = "500";
   }
 
   function hideArticle(article) {
@@ -197,7 +159,7 @@ function init() {
 
     mainImage.style.zIndex = "500";
 
-    mainImage.style.transition = "opacity 0.8s , transform 1s 0.8s";
+    mainImage.style.transition = "opacity 1.2s , transform 1s 1.2s";
     mainImage.style.opacity = "0";
     mainImage.style.transform =
       "translate3d(0px, 50vh, 0px) scale3d(0.4, 0.4, 1) rotateZ(0deg)";
@@ -213,16 +175,16 @@ function init() {
       "translate3d(-50%, 0px, 0px) scale3d(1, 1, 1) rotateZ(6deg) ";
 
     mainImg.style.opacity = "0";
-    mainImg.style.transition = "opacity 1s ease-out, transform 0.4s";
+    mainImg.style.transition = "opacity 0.6s ease-out, transform 0.4s";
     mainImg.style.transform =
       "translate3d(0px, 0%, 0px) scale3d(1, 1, 1) rotateZ(0deg)";
 
-    firstImg.style.transition = "opacity 0.4s , transform 0.5s 0.4s";
+    firstImg.style.transition = "opacity 0.4s , transform 0.5s 0.5s";
     firstImg.style.opacity = 0;
     firstImg.style.transform =
       "translate3d(0, 100%, 0px) scale3d(1, 1, 1) rotateZ(0deg)";
 
-    secondImg.style.transition = "opacity 0.4s , transform 0.5s 0.4s";
+    secondImg.style.transition = "opacity 0.4s , transform 0.5s 0.5s";
     secondImg.style.opacity = 0;
     secondImg.style.transform =
       "translate3d(0%, 100%, 0px) scale3d(1, 1, 1) rotateZ(0deg)";
@@ -246,10 +208,6 @@ function init() {
   // intersection observer ends
 
   const heroWrap = document.querySelector(".hero-wrap");
-  const heroContainer = document.querySelector(".hero-wrap .container");
-  const mainImages = document.querySelectorAll(".main-image");
-  const firstImages = document.querySelectorAll(".first-image");
-  const secondImages = document.querySelectorAll(".second-image");
 
   window.addEventListener("scroll", function (e) {
     const scrollPos = window.scrollY;
@@ -272,6 +230,8 @@ function init() {
     const progressBar = document.querySelector(".progress-bar");
     const workHeight = document.querySelector(".work").clientHeight;
     const workOffsetTop = document.querySelector(".work").offsetTop;
+    const sliderProgress = document.querySelector(".slider-progress");
+    const articleHeight = document.querySelector("article").clientHeight;
 
     if (
       scrollPos >= workOffsetTop - 300 &&
@@ -280,63 +240,26 @@ function init() {
       showProjec();
       progressBar.style.width =
         ((scrollPos + 300 - workOffsetTop) / workHeight) * 100 + "%";
+
+      console.log(
+        "scrfoplPos:" +
+          scrollPos +
+          " work:" +
+          workOffsetTop +
+          " article" +
+          articleHeight
+      );
+      let articleDiffer = (scrollPos - workOffsetTop + 300) % articleHeight;
+      if (articleDiffer <= 10) {
+        sliderProgress.style.transform = `translate3d(0,${115}%,0)`;
+      } else {
+        let position = (articleDiffer * 230) / articleHeight;
+        sliderProgress.style.transform = `translate3d(0,${115 - position}%,0)`;
+      }
     } else {
-      console.log("hide");
-      //progressBar.style.width = "0%";
-      hideProject(0);
+      hideProject();
     }
   }
-
-  // setArticle.enteredZone = 0;
-  // function setArticle(scrollPos) {
-  //   const article = document.querySelector(".work article");
-  //   const articleHeight = article.clientHeight;
-
-  //   if (setArticle.enteredZone !== 1) hideArticle(0);
-  //   if (setArticle.enteredZone !== 2) hideArticle(1);
-  //   if (setArticle.enteredZone !== 3) hideArticle(2);
-
-  //   if (scrollPos <= 960 || scrollPos >= 960 + 3 * articleHeight)
-  //     setArticle.enteredZone = 0;
-
-  //   if (articleFirstInView()) {
-  //     if (setArticle.enteredZone !== 1) {
-  //       setupArticle(0);
-  //     }
-  //   } else if (articleSecondInView()) {
-  //     if (setArticle.enteredZone !== 2) {
-  //       setupArticle(1);
-  //     }
-  //   } else if (articleThirdInView()) {
-  //     if (setArticle.enteredZone !== 3) {
-  //       setupArticle(2);
-  //     }
-  //   }
-
-  //   function articleFirstInView() {
-  //     return scrollPos > 960 && scrollPos < 960 + articleHeight;
-  //   }
-
-  //   function articleSecondInView() {
-  //     return (
-  //       scrollPos >= 960 + articleHeight && scrollPos < 960 + 2 * articleHeight
-  //     );
-  //   }
-
-  //   function articleThirdInView() {
-  //     return (
-  //       scrollPos >= 960 + 2 * articleHeight &&
-  //       scrollPos < 960 + 3 * articleHeight
-  //     );
-  //   }
-
-  //   function setupArticle(index) {
-  //     setArticle.enteredZone = index + 1;
-  //     setTimeout(() => {
-  //       showArticle(index);
-  //     }, 0);
-  //   }
-  // }
 
   function showProjec() {
     document.querySelector(".project").style.display = "block";
