@@ -58,7 +58,7 @@ function init() {
       if (entry.intersectionRatio > 0.5) {
         setTimeout(() => {
           element.querySelector(".project-container").style.display = "flex";
-        }, 00);
+        }, 0);
         setTimeout(() => {
           showArticle(element);
           element
@@ -253,8 +253,8 @@ function init() {
       if (articleDiffer <= 10) {
         sliderProgress.style.transform = `translate3d(0,${115}%,0)`;
       } else {
-        let position = (articleDiffer * 230) / articleHeight;
-        sliderProgress.style.transform = `translate3d(0,${115 - position}%,0)`;
+        let position = (articleDiffer * 220) / articleHeight;
+        sliderProgress.style.transform = `translate3d(0,${110 - position}%,0)`;
       }
     } else {
       hideProject();
